@@ -1,0 +1,306 @@
+@import "tailwindcss";
+
+/* ========================================
+   DESIGN TOKENS & COLOR SYSTEM
+   ======================================== */
+
+:root {
+  /* Dark Mode (Default) — Warm charcoal, not pure black */
+  --bg-primary: #121214;
+  --bg-secondary: #1A1A1E;
+  --bg-tertiary: #232328;
+  --bg-hover: #2A2A30;
+
+  --text-primary: #EDEDEF;
+  --text-secondary: #9CA3AF;
+  --text-tertiary: #6B7280;
+
+  /* Soft blue accent — much easier on eyes than gold */
+  --accent-primary: #6C9CFC;
+  --accent-secondary: #A78BFA;
+  --accent-green: #34D399;
+  --accent-red: #F87171;
+  --accent-purple: #A78BFA;
+
+  --border-subtle: #232328;
+  --border-default: #2E2E35;
+  --border-hover: #404048;
+
+  --glow-yellow: rgba(108, 156, 252, 0.10);
+  --glow-blue: rgba(167, 139, 250, 0.08);
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  /* Gradient text */
+  --gradient-start: #60A5FA;
+  --gradient-mid: #A78BFA;
+  --gradient-end: #F472B6;
+}
+
+[data-theme="light"] {
+  /* Warm off-white, not stark white */
+  --bg-primary: #F8F8FA;
+  --bg-secondary: #F0F0F4;
+  --bg-tertiary: #FFFFFF;
+  --bg-hover: #E8E8EE;
+
+  --text-primary: #18181B;
+  --text-secondary: #52525B;
+  --text-tertiary: #71717A;
+
+  --accent-primary: #4F7FE8;
+  --accent-secondary: #7C3AED;
+  --accent-green: #16A34A;
+  --accent-red: #DC2626;
+  --accent-purple: #7C3AED;
+
+  --border-subtle: #E4E4E8;
+  --border-default: #D4D4D8;
+  --border-hover: #A1A1AA;
+
+  --glow-yellow: rgba(79, 127, 232, 0.08);
+  --glow-blue: rgba(124, 58, 237, 0.06);
+  --glass: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.06);
+
+  /* Gradient text */
+  --gradient-start: #3B82F6;
+  --gradient-mid: #8B5CF6;
+  --gradient-end: #EC4899;
+}
+
+/* ========================================
+   THEME INLINE OVERRIDES
+   ======================================== */
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-hover: var(--bg-hover);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-green: var(--accent-green);
+  --color-accent-red: var(--accent-red);
+  --color-accent-purple: var(--accent-purple);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-hover: var(--border-hover);
+
+  --color-glow-yellow: var(--glow-yellow);
+  --color-glow-blue: var(--glow-blue);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-display: var(--font-bebas-neue);
+  --font-serif: var(--font-instrument-serif);
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.font-display {
+  font-family: var(--font-display, var(--font-sans, 'Inter', system-ui, sans-serif));
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.font-serif-accent {
+  font-family: var(--font-serif, Georgia, 'Times New Roman', serif);
+}
+
+/* Max line length for readability */
+.prose-width {
+  max-width: 680px;
+}
+
+/* Section eyebrow */
+.eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  color: var(--accent-primary);
+}
+
+/* ========================================
+   GRADIENT TEXT
+   ======================================== */
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ========================================
+   SKELETON SHIMMER
+   ======================================== */
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-hover) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* ========================================
+   SELECTION
+   ======================================== */
+
+::selection {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========================================
+   GRAIN TEXTURE
+   ======================================== */
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+[data-theme="light"] .grain::before {
+  opacity: 0.02;
+}
+
+/* ========================================
+   ANIMATED LINK UNDERLINE
+   ======================================== */
+
+.link-animated {
+  position: relative;
+}
+
+.link-animated::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-primary);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-animated:hover::after {
+  width: 100%;
+}
+
+/* ========================================
+   GLASS MORPHISM
+   ======================================== */
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* ========================================
+   FOCUS STATES (WCAG 2.4.7)
+   ======================================== */
+
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
