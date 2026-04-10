@@ -4,7 +4,7 @@ import { projects, caseStudies } from "@/lib/data";
 import CaseStudyView from "@/components/CaseStudyView";
 import SectionWrapper from "@/components/SectionWrapper";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -61,7 +61,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </span>
           ))}
         </div>
-        <p className="text-sm font-mono text-text-tertiary">{project.year}</p>
+        <p className="text-sm font-mono text-text-tertiary mb-6">{project.year}</p>
+        {"documentUrl" in project && project.documentUrl && (
+          <a
+            href={project.documentUrl as string}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-bg-secondary border border-border-subtle text-sm font-medium text-text-primary hover:border-border-hover hover:bg-bg-hover transition-all duration-200"
+          >
+            View Full Document
+            <ArrowUpRight size={14} />
+          </a>
+        )}
       </SectionWrapper>
     </main>
   );

@@ -72,9 +72,22 @@ function ProjectCard({
                 </span>
               ))}
             </div>
-            <span className="text-xs text-text-tertiary font-mono">
-              {project.year}
-            </span>
+            <div className="flex items-center gap-3">
+              {"documentUrl" in project && project.documentUrl && (
+                <a
+                  href={project.documentUrl as string}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-[10px] font-mono text-text-tertiary hover:text-text-primary underline underline-offset-2 transition-colors"
+                >
+                  View Doc
+                </a>
+              )}
+              <span className="text-xs text-text-tertiary font-mono">
+                {project.year}
+              </span>
+            </div>
           </div>
         </div>
       </Link>

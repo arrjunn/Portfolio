@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import type { CaseStudy } from "@/lib/data";
 import SectionRenderer from "./case-study/SectionRenderer";
@@ -70,6 +70,19 @@ export default function CaseStudyView({ study }: { study: CaseStudy }) {
             <p className="text-xs font-mono text-accent-primary uppercase tracking-wider mb-2">TL;DR</p>
             <p className="text-sm text-text-secondary leading-relaxed">{study.tldr}</p>
           </div>
+
+          {/* View Document button */}
+          {study.documentUrl && (
+            <a
+              href={study.documentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-lg bg-bg-secondary border border-border-subtle text-sm font-medium text-text-primary hover:border-border-hover hover:bg-bg-hover transition-all duration-200"
+            >
+              View Full Document
+              <ArrowUpRight size={14} />
+            </a>
+          )}
         </motion.div>
 
         {/* Content with sticky nav */}

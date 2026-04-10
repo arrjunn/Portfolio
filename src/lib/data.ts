@@ -38,8 +38,9 @@ export const projects = [
       "Built an AI auto-triage system that classifies, prioritizes, and clusters incoming feature requests using a RAG pipeline and K-means++ clustering. Deployed across 48 production instances.",
     tags: ["AI", "RAG", "SaaS", "Product"],
     year: "2026",
-    thumbnail: "/projects/backlog.jpg", // Data analytics dashboard
+    thumbnail: "/projects/backlog.jpg",
     featured: true,
+    documentUrl: "https://backlog-the-ultimate-feature-priori.vercel.app",
   },
   {
     slug: "post-event-retention",
@@ -61,6 +62,7 @@ export const projects = [
     thumbnail: "/projects/splitwise.jpg",
     featured: true,
     competition: "IIM Calcutta",
+    documentUrl: "https://drive.google.com/file/d/1SWwWIwtYoHnlZaOF2M1GcQqaTwXMEhJQ/view",
   },
   // ---- Competition Projects (from hackathons) ----
   {
@@ -73,6 +75,7 @@ export const projects = [
     thumbnail: "/projects/assistly.jpg",
     featured: false,
     competition: "IIT Roorkee E-Summit",
+    documentUrl: "https://drive.google.com/file/d/1tYW5Vs044DHCu5_-n6OCi56UtmqqeS8V/view",
   },
   {
     slug: "caro",
@@ -84,6 +87,7 @@ export const projects = [
     thumbnail: "/projects/caro.jpg",
     featured: false,
     competition: "IIT Roorkee E-Summit",
+    documentUrl: "https://drive.google.com/file/d/11z33-vQjVRvPdQE80iFk8dmB3UmUv5kk/view",
   },
   {
     slug: "hatk",
@@ -95,6 +99,7 @@ export const projects = [
     thumbnail: "/projects/hatk.jpg",
     featured: false,
     competition: "IIT Guwahati E-Summit",
+    documentUrl: "https://drive.google.com/file/d/19tNdf2yl83LRUjtenDbZaaX2LIqTCaix/view",
   },
   {
     slug: "hiresight",
@@ -106,6 +111,7 @@ export const projects = [
     thumbnail: "/projects/hiresight.jpg",
     featured: false,
     competition: "IIITDM Jabalpur TechFest",
+    documentUrl: "https://drive.google.com/file/d/1x_O0yzXh5dmi_oEKwb2Iv0rwcMwBDAFv/view",
   },
   {
     slug: "phulkari",
@@ -117,6 +123,7 @@ export const projects = [
     thumbnail: "/projects/phulkari.jpg",
     featured: false,
     competition: "IIM Bangalore Fest",
+    documentUrl: "https://drive.google.com/file/d/1oaooqga5ok1ClRsyOduk8Q4jBK2R6IzA/view",
   },
   {
     slug: "nocaps",
@@ -128,6 +135,7 @@ export const projects = [
     thumbnail: "/projects/nocaps.jpg",
     featured: false,
     competition: "IIT Delhi E-Summit",
+    documentUrl: "https://drive.google.com/file/d/1cXJ-kwhjftx0Y0ru3S5vxijEQCbV_qzm/view",
   },
 ];
 
@@ -496,6 +504,7 @@ export interface CaseStudy {
   role: string;
   timeline: string;
   team: string;
+  documentUrl?: string;
   sections: CaseStudySection[];
 }
 
@@ -509,6 +518,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product & Growth",
     timeline: "Jan 2026",
     team: "Cross-functional (Marketing + Engineering)",
+    documentUrl: undefined,
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "High-value leads were getting lost", content: "After events, the follow-up process was entirely manual. Marketing teams were copy-pasting personalized emails, leads went cold within hours, and high-value VIP leads were buried in the same queue as everyone else.", bullets: ["Manual outreach taking 5+ hours per event", "VIP leads lost due to slow routing", "No personalization at scale — same template for everyone", "Zero real-time engagement tracking"] },
       { id: "research", type: "research", title: "The Research", subtitle: "Understanding the post-event funnel", content: "I mapped the entire post-event lifecycle from attendance to sales conversion. The critical insight: response time was the #1 predictor of conversion, not content quality. VIP leads that got a response within 5 minutes converted 4x more than those contacted after 24 hours.", bullets: ["Mapped event attendance → follow-up → conversion funnel", "Identified response latency as the key conversion driver", "Found that 80% of manual effort was on low-value leads", "VIP leads (top 10%) generated 60% of revenue"] },
@@ -527,6 +537,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Analyst",
     timeline: "Dec 2025",
     team: "Solo (IIM Calcutta competition)",
+    documentUrl: "https://drive.google.com/file/d/1SWwWIwtYoHnlZaOF2M1GcQqaTwXMEhJQ/view",
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "Splitwise loses users after they settle up", content: "Splitwise dominates expense splitting, but the product lifecycle effectively ends when debts are settled. There's no reason to come back. D30 retention drops by 60% once a group becomes inactive.", bullets: ["60% D30 retention drop post-settlement", "Product lifecycle ends at transaction completion", "No group continuity features exist", "Users see Splitwise as a 'utility' not a 'companion'"] },
       { id: "research", type: "research", title: "The Research", subtitle: "Mapping the full user journey", content: "I mapped the complete user journey from group creation to settlement and beyond. The critical gap: Splitwise captures the 'splitting' job perfectly but completely abandons users after the core job is done. The group context — the most valuable asset — is discarded.", bullets: ["Mapped group creation → expense → settlement → churn funnel", "Identified that group context (who owes whom, shared history) is the real asset", "Benchmarked against Venmo, PayPal, and shared finance tools", "Found that 'household' groups have 3x higher lifetime value than one-off groups"] },
@@ -545,6 +556,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Strategy & Growth Intern",
     timeline: "Jan 2025 – Mar 2025",
     team: "Founding team (3 members)",
+    documentUrl: undefined,
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "No product-market signal for campus food delivery", content: "RapidRasoi was a new food-delivery startup targeting the IIIT Nagpur campus. The founding team had a product idea but zero user signal — no validation of merchant pain points, no understanding of commission sensitivity, and no GTM strategy.", bullets: ["Zero merchant validation before building", "Unknown pain points around onboarding and commissions", "No competitive analysis against existing campus food options", "No phased rollout plan for limited resources"] },
       { id: "research", type: "research", title: "The Research", subtitle: "40+ in-person merchant interviews", content: "I conducted in-person interviews with 40+ restaurant owners near campus. This was not a survey — it was sitting in their kitchens, understanding their daily operations, and hearing their real frustrations. The pain points they articulated were completely different from what we assumed.", bullets: ["40+ in-person interviews with restaurant owners", "Discovered onboarding friction was the #1 concern (not commission rates)", "Found that trust and reliability mattered more than pricing", "Identified a segment of 'digitally hesitant' merchants who needed hand-holding"] },
@@ -563,6 +575,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Lead",
     timeline: "2025",
     team: "IIT Roorkee E-Summit Competition",
+    documentUrl: "https://drive.google.com/file/d/1tYW5Vs044DHCu5_-n6OCi56UtmqqeS8V/view",
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "Cognitive overload kills productivity", content: "Knowledge workers struggle to prioritize tasks when everything feels urgent. Existing productivity tools add complexity instead of reducing it — more features, more friction, more decisions.", bullets: ["Users overwhelmed by too many tasks and no clear priority", "Existing tools add complexity instead of reducing cognitive load", "No personalization — same workflow for everyone regardless of work style", "Task completion rates drop as backlog grows"] },
       { id: "research", type: "research", title: "The Research", subtitle: "Understanding how people actually prioritize", content: "I studied how different types of workers prioritize their day. The pattern: most people default to urgency over importance, and existing tools reinforce this bias instead of correcting it.", bullets: ["Identified 3 user personas: Deadline-driven, Flow-state, and Planner", "Mapped daily workflows showing where cognitive overload hits", "Found that personalization (adapting to work style) was the most requested missing feature"] },
@@ -580,6 +593,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Strategy",
     timeline: "2025",
     team: "IIT Roorkee E-Summit Competition",
+    documentUrl: "https://drive.google.com/file/d/11z33-vQjVRvPdQE80iFk8dmB3UmUv5kk/view",
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "Elder care that respects dignity", content: "Most elder care tech is designed for caregivers, not seniors. It's intrusive, surveillance-heavy, and strips dignity from the people it's supposed to help. Seniors feel monitored, not cared for.", bullets: ["Existing solutions are caregiver-first, not senior-first", "Surveillance-heavy design erodes trust and dignity", "Seniors reject intrusive monitoring technologies", "Caregiver stress increases when seniors resist tech"] },
       { id: "research", type: "research", title: "The Research", subtitle: "Designing for both sides", content: "I shaped the product vision around both caregivers and seniors — understanding that the product must serve two fundamentally different user needs simultaneously.", bullets: ["Dual persona research: seniors (autonomy) and caregivers (peace of mind)", "Found that non-intrusive sensing (ambient, not camera-based) was the key to acceptance", "Privacy and dignity emerged as non-negotiable design constraints"] },
@@ -597,6 +611,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Strategy & Growth",
     timeline: "2025",
     team: "IIT Guwahati E-Summit Competition",
+    documentUrl: "https://drive.google.com/file/d/19tNdf2yl83LRUjtenDbZaaX2LIqTCaix/view",
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "Photobooths are stuck in the rental era", content: "Photobooths are seen as a commodity rental service — same product, same price, no differentiation. The market was ripe for transformation into an experience-driven product.", bullets: ["Commoditized market with zero differentiation", "Revenue capped at per-event rental fees", "No social sharing or virality mechanics", "Missing the Gen Z experience economy"] },
       { id: "research", type: "research", title: "The Research", subtitle: "Understanding Gen Z event behavior", content: "I researched Gen Z behavior at events — what they share, why they share, and what makes an experience 'post-worthy'. The insight: Gen Z doesn't pay for products, they pay for shareable moments.", bullets: ["Studied Gen Z social sharing behavior at events", "Identified 'shareability' as the key value driver, not photo quality", "Mapped B2C (individual) and B2B (corporate event) monetization paths"] },
@@ -614,6 +629,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Architect",
     timeline: "2025",
     team: "IIITDM Jabalpur TechFest Competition",
+    documentUrl: "https://drive.google.com/file/d/1x_O0yzXh5dmi_oEKwb2Iv0rwcMwBDAFv/view",
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "Startups hire on intuition, lose on attrition", content: "Startups and SMEs make hiring decisions based on gut feeling, then lose employees within 6 months because of culture mismatches and unclear role expectations. The cost of a bad hire at a 20-person startup is devastating.", bullets: ["Hiring decisions driven by intuition, not data", "Early attrition (0-6 months) is the #1 cost for startups", "No tools for SMEs — enterprise HR platforms are too complex and expensive", "Culture-fit assessment is subjective and biased"] },
       { id: "research", type: "research", title: "The Research", subtitle: "From intuition to insight", content: "I studied how startups actually hire and what predicts early attrition. The pattern: companies that defined 'employee archetypes' (behavioral profiles that succeed in their culture) had 3x lower attrition.", bullets: ["Identified employee archetypes as the key predictor of retention", "Mapped the hiring workflow: source → screen → interview → offer → onboard", "Found that the screen → interview transition had the highest drop-off and bias"] },
@@ -631,6 +647,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Brand Strategy",
     timeline: "2025",
     team: "IIM Bangalore Fest Competition",
+    documentUrl: "https://drive.google.com/file/d/1oaooqga5ok1ClRsyOduk8Q4jBK2R6IzA/view",
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "A dying craft in a booming luxury market", content: "Phulkari — a traditional Punjabi embroidery craft — was declining. Artisans were aging out, young people weren't learning it, and the market positioned it as cheap ethnic wear instead of the premium art form it is.", bullets: ["Artisan population declining year over year", "Market perception: 'cheap ethnic wear' instead of luxury craft", "No brand narrative connecting heritage to premium positioning", "Global luxury market growing 8% YoY while Phulkari stagnated"] },
       { id: "solution", type: "solution", title: "The Strategy", subtitle: "Creator-first luxury ecosystem", content: "Designed a repositioning strategy that transforms Phulkari into a premium, scalable luxury brand. A creator-first model that integrates storytelling, authenticity, and global market expansion.", bullets: ["Repositioned from ethnic wear to 'wearable art' — luxury positioning", "Creator-first model: artisan stories as the brand narrative", "Storytelling-driven marketing: each piece has a provenance story", "Global expansion strategy targeting diaspora and luxury conscious consumers"] },
@@ -647,6 +664,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Brand & GTM Strategy",
     timeline: "2025",
     team: "IIT Delhi E-Summit Competition",
+    documentUrl: "https://drive.google.com/file/d/1cXJ-kwhjftx0Y0ru3S5vxijEQCbV_qzm/view",
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "A commoditized category with zero emotional connection", content: "The product category was fully commoditized — consumers chose based on price or availability, with zero brand loyalty or emotional connection. The market was functional, not aspirational.", bullets: ["Zero brand differentiation in the category", "Purchase decisions driven purely by price/availability", "No emotional connection between brand and consumer", "Younger consumers especially disengaged from existing brands"] },
       { id: "research", type: "research", title: "The Research", subtitle: "Understanding Gen Z purchase psychology", content: "I studied consumer psychology around traditionally 'boring' product categories. The insight: Gen Z doesn't buy products, they buy identities. Even in functional categories, there's an opportunity to build emotional recall through positioning.", bullets: ["Mapped Gen Z purchase psychology in functional categories", "Identified 'confidence' as the emotional territory to own", "Found that relatable messaging > feature-based messaging for young consumers"] },
@@ -664,6 +682,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Solo Builder & PM",
     timeline: "Dec 2025 – Feb 2026",
     team: "Solo",
+    documentUrl: "https://backlog-the-ultimate-feature-priori.vercel.app",
     sections: [
       {
         id: "problem",
