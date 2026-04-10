@@ -13,6 +13,8 @@ import CustomCursor from "@/components/CustomCursor";
 import ConsoleEasterEgg from "@/components/ConsoleEasterEgg";
 import { Toaster } from "sonner";
 import "./globals.css";
+import "@/styles/animations.css";
+import "@/styles/components.css";
 
 const inter = Inter({
   variable: "--font-inter",
