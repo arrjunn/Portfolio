@@ -1,7 +1,6 @@
 "use client";
 
 import { MapPin } from "lucide-react";
-import SpotifyNowPlaying from "../SpotifyNowPlaying";
 import { siteConfig, changelog } from "@/lib/data";
 
 export default function NowCard() {
@@ -34,12 +33,9 @@ export default function NowCard() {
         ))}
       </div>
 
-      <div className="flex items-center justify-between pt-3 border-t border-border-subtle">
-        <div className="flex items-center gap-1.5 text-xs text-text-tertiary">
-          <MapPin size={12} />
-          {siteConfig.location}
-        </div>
-        <SpotifyNowPlaying />
+      <div className="flex items-center gap-1.5 text-xs text-text-tertiary pt-3 border-t border-border-subtle">
+        <MapPin size={12} />
+        {siteConfig.location}
       </div>
     </div>
   );

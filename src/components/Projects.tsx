@@ -34,10 +34,12 @@ function ProjectCard({
       >
         {/* Thumbnail */}
         <div className="aspect-video bg-bg-tertiary relative overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center text-text-tertiary text-4xl">
-            🚀
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <img
+            src={project.thumbnail}
+            alt={project.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary/90 via-bg-secondary/20 to-transparent" />
         </div>
 
         {/* Content */}
@@ -56,7 +58,7 @@ function ProjectCard({
           </p>
           {"competition" in project && project.competition && (
             <p className="text-[10px] font-mono text-accent-primary mb-3">
-              🏆 {project.competition}
+              {project.competition}
             </p>
           )}
           <div className="flex items-center justify-between">
@@ -96,15 +98,6 @@ export default function Projects({ limit, showAll }: { limit?: number; showAll?:
         ))}
       </div>
 
-      <div className="mt-10 text-center">
-        <Link
-          href="/work"
-          className="inline-flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-accent-primary transition-colors duration-200"
-        >
-          View All Projects
-          <ArrowRight size={14} />
-        </Link>
-      </div>
     </SectionWrapper>
   );
 }

@@ -5,7 +5,7 @@ import Bookshelf from "@/components/Bookshelf";
 import Colophon from "@/components/Colophon";
 
 export const metadata: Metadata = {
-  title: "Context — Arjun Varshney",
+  title: "Story — Arjun Varshney",
   description:
     "The person behind the pixels. My story, adventures, what I read, and how I built this.",
 };

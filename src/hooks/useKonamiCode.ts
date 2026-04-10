@@ -2,40 +2,32 @@
 
 import { useEffect, useState, useRef } from "react";
 
-const KONAMI = [
-  "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
-  "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight",
-  "b", "a",
-];
-
 export function useKonamiCode() {
   const [triggered, setTriggered] = useState(false);
-  const indexRef = useRef(0);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const clickCount = useRef(0);
+  const clickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === KONAMI[indexRef.current]) {
-        indexRef.current++;
-        if (timerRef.current) clearTimeout(timerRef.current);
-        timerRef.current = setTimeout(() => {
-          indexRef.current = 0;
-        }, 3000);
+    function onClick() {
+      clickCount.current++;
 
-        if (indexRef.current === KONAMI.length) {
-          setTriggered(true);
-          indexRef.current = 0;
-          setTimeout(() => setTriggered(false), 600);
-        }
+      if (clickTimer.current) clearTimeout(clickTimer.current);
+
+      if (clickCount.current >= 3) {
+        clickCount.current = 0;
+        setTriggered(true);
+        setTimeout(() => setTriggered(false), 100);
       } else {
-        indexRef.current = 0;
+        clickTimer.current = setTimeout(() => {
+          clickCount.current = 0;
+        }, 400);
       }
     }
 
-    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("click", onClick);
     return () => {
-      document.removeEventListener("keydown", onKeyDown);
-      if (timerRef.current) clearTimeout(timerRef.current);
+      document.removeEventListener("click", onClick);
+      if (clickTimer.current) clearTimeout(clickTimer.current);
     };
   }, []);
 

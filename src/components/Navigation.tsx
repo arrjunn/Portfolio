@@ -9,10 +9,10 @@ import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
   { label: "Shipped", href: "/work" },
+  { label: "Story", href: "/about" },
+  { label: "Resume", href: "/resume" },
   { label: "Thinking", href: "/mind" },
   { label: "Tinkering", href: "/lab" },
-  { label: "Context", href: "/about" },
-  { label: "Resume", href: "/resume" },
 ];
 
 export default function Navigation() {
@@ -53,13 +53,13 @@ export default function Navigation() {
         <div className="mx-auto max-w-[1280px] px-5 md:px-10 lg:px-16 flex items-center justify-between h-14">
           <Link
             href="/"
-            className="text-text-primary font-display font-bold text-base tracking-tight hover:text-accent-primary transition-colors duration-200"
+            className="text-text-primary font-display font-bold text-xl tracking-tight hover:text-accent-primary transition-colors duration-200 flex-shrink-0"
           >
-            AV
+            Arjun<span className="text-accent-primary">.</span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden lg:flex items-center gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -104,7 +104,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-bg-hover transition-colors text-text-secondary"
+            className="lg:hidden p-2 rounded-lg hover:bg-bg-hover transition-colors text-text-secondary"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -120,7 +120,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-bg-primary/98 md:hidden flex flex-col items-start justify-center px-10 gap-6"
+            className="fixed inset-0 z-40 bg-bg-primary/98 lg:hidden flex flex-col items-start justify-center px-10 gap-6"
           >
             {navLinks.map((link, i) => (
               <motion.div

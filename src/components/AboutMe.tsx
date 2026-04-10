@@ -23,8 +23,12 @@ export default function AboutMe() {
         className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-8 md:gap-12"
       >
         {/* Photo */}
-        <div className="aspect-[4/5] rounded-2xl bg-bg-secondary border border-border-subtle overflow-hidden flex items-center justify-center">
-          <span className="text-8xl text-text-tertiary/30 select-none">📸</span>
+        <div className="aspect-[4/5] rounded-2xl bg-bg-secondary border border-border-subtle overflow-hidden">
+          <img
+            src="/arjun.jpg"
+            alt="Arjun Varshney"
+            className="w-full h-full object-cover object-center"
+          />
         </div>
 
         {/* Text */}
@@ -66,7 +70,6 @@ export default function AboutMe() {
                 transition={{ delay: 0.4 + i * 0.08, duration: 0.4 }}
                 className="p-3 rounded-xl bg-bg-secondary border border-border-subtle hover:border-border-hover hover:-translate-y-0.5 transition-all duration-200"
               >
-                <span className="text-lg mb-1 block">{fact.emoji}</span>
                 <span className="text-xs text-text-secondary leading-snug">
                   {fact.text}
                 </span>

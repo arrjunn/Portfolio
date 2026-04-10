@@ -3,7 +3,6 @@ import Principles from "@/components/Principles";
 import FrameworkLibrary from "@/components/FrameworkLibrary";
 import DecisionLog from "@/components/DecisionLog";
 import ChangedMind from "@/components/ChangedMind";
-import KnowledgeGraph from "@/components/KnowledgeGraph";
 
 export const metadata: Metadata = {
   title: "Thinking — Arjun Varshney",
@@ -18,7 +17,6 @@ export default function MindPage() {
       <FrameworkLibrary />
       <DecisionLog />
       <ChangedMind />
-      <KnowledgeGraph />
     </main>
   );
 }

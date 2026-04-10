@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TheLab from "@/components/TheLab";
 
 export const metadata: Metadata = {
-  title: "The Lab — Arjun Varshney",
+  title: "Tinkering — Arjun Varshney",
   description:
     "Experiments, hypotheses, and half-baked ideas. Where I tinker with AI, product, and code.",
 };

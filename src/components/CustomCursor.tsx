@@ -4,11 +4,9 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
+  const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [isTouch] = useState(() =>
-    typeof window !== "undefined" ? window.matchMedia("(hover: none)").matches : true
-  );
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -16,7 +14,9 @@ export default function CustomCursor() {
   const springY = useSpring(cursorY, { stiffness: 250, damping: 25 });
 
   useEffect(() => {
-    if (isTouch) return;
+    // Only show cursor on devices with hover (no touch)
+    if (window.matchMedia("(hover: none)").matches) return;
+    const rafId = requestAnimationFrame(() => setMounted(true));
 
     function onMouseMove(e: MouseEvent) {
       cursorX.set(e.clientX);
@@ -39,13 +39,15 @@ export default function CustomCursor() {
     document.addEventListener("mouseover", onMouseOver);
 
     return () => {
+      cancelAnimationFrame(rafId);
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("mouseover", onMouseOver);
     };
-  }, [cursorX, cursorY, isTouch]);
+  }, [cursorX, cursorY]);
 
-  if (isTouch) return null;
+  // Don't render on server or on touch devices
+  if (!mounted) return null;
 
   return (
     <motion.div
@@ -66,8 +68,8 @@ export default function CustomCursor() {
       <div
         className="w-full h-full rounded-full border-2"
         style={{
-          borderColor: "var(--accent-primary)",
-          backgroundColor: hovered ? "rgba(108, 156, 252, 0.1)" : "transparent",
+          borderColor: "var(--text-tertiary)",
+          backgroundColor: hovered ? "rgba(163, 163, 163, 0.08)" : "transparent",
         }}
       />
     </motion.div>

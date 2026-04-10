@@ -1,103 +1,69 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Star, BookOpen } from "lucide-react";
-import { bookshelf } from "@/lib/data";
+import { useRef } from "react";
+import { Play } from "lucide-react";
+import { contentIConsume } from "@/lib/data";
 import SectionWrapper from "./SectionWrapper";
 
 export default function Bookshelf() {
-  const [hoveredBook, setHoveredBook] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <SectionWrapper
-      eyebrow="Bookshelf"
+      eyebrow="Content I Consume"
       title="What Shapes My Thinking"
-      description="Books that have changed how I see products, people, and the world."
+      description="YouTube channels I regularly watch to stay sharp on product, AI, and strategy."
     >
       <motion.div
         ref={ref}
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.6 }}
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 md:gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
       >
-        {bookshelf.map((book, i) => (
-          <motion.div
-            key={book.title}
+        {contentIConsume.map((channel, i) => (
+          <motion.a
+            key={channel.name}
+            href={channel.url}
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: i * 0.08, duration: 0.5 }}
-            onMouseEnter={() => setHoveredBook(book.title)}
-            onMouseLeave={() => setHoveredBook(null)}
-            onFocus={() => setHoveredBook(book.title)}
-            onBlur={() => setHoveredBook(null)}
-            tabIndex={0}
-            role="article"
-            aria-label={`${book.title} by ${book.author}`}
-            className="group relative"
+            className="group flex items-start gap-4 p-4 rounded-2xl bg-bg-secondary border border-border-subtle hover:border-accent-primary/40 transition-all duration-300"
           >
-            {/* Book Cover */}
-            <div className="aspect-[2/3] rounded-xl bg-bg-secondary border border-border-subtle overflow-hidden relative hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer">
-              {/* Placeholder cover */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-gradient-to-b from-bg-tertiary to-bg-secondary">
-                <BookOpen
-                  size={24}
-                  className="text-text-tertiary mb-3 opacity-40"
-                />
-                <p className="text-xs font-semibold text-text-secondary leading-tight">
-                  {book.title}
-                </p>
-                <p className="text-[10px] text-text-tertiary mt-1">
-                  {book.author}
-                </p>
-              </div>
-
-              {/* Currently Reading Badge */}
-              {book.currentlyReading && (
-                <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-accent-green/20 text-accent-green text-[9px] font-mono font-medium">
-                  Reading
-                </div>
-              )}
-
-              {/* Hover Overlay */}
-              <div
-                className={`absolute inset-0 bg-bg-primary/90 backdrop-blur-sm p-4 flex flex-col justify-end transition-opacity duration-200 ${
-                  hoveredBook === book.title ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <p className="text-xs font-semibold text-text-primary mb-1">
-                  {book.title}
-                </p>
-                <p className="text-[10px] text-text-tertiary mb-2">
-                  {book.author}
-                </p>
-                <p className="text-[11px] text-text-secondary leading-relaxed mb-2">
-                  {book.review}
-                </p>
-                <div className="flex gap-0.5" aria-label={`${book.rating} out of 5 stars`} role="img">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <Star
-                      key={j}
-                      size={10}
-                      className={
-                        j < book.rating
-                          ? "text-accent-primary fill-accent-primary"
-                          : "text-text-tertiary"
-                      }
-                    />
-                  ))}
-                </div>
-              </div>
+            {/* Avatar */}
+            <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-bg-tertiary border border-border-subtle">
+              <img
+                src={channel.avatar}
+                alt={channel.name}
+                className="w-full h-full object-cover"
+              />
             </div>
 
-            {/* Category tag */}
-            <p className="text-[10px] font-mono text-text-tertiary mt-2 text-center">
-              {book.category}
-            </p>
-          </motion.div>
+            {/* Info */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-1">
+                <h3 className="text-sm font-semibold text-text-primary group-hover:text-accent-primary transition-colors truncate">
+                  {channel.name}
+                </h3>
+                <Play size={10} className="text-accent-red flex-shrink-0" />
+              </div>
+              <p className="text-xs text-text-tertiary leading-relaxed line-clamp-2 mb-2">
+                {channel.description}
+              </p>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-0.5 text-[10px] font-mono rounded bg-bg-tertiary text-text-tertiary border border-border-subtle">
+                  {channel.category}
+                </span>
+                <span className="text-[10px] font-mono text-text-tertiary">
+                  {channel.subs} subs
+                </span>
+              </div>
+            </div>
+          </motion.a>
         ))}
       </motion.div>
     </SectionWrapper>

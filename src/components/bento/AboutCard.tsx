@@ -26,8 +26,8 @@ export default function AboutCard() {
         {/* Left — Intro */}
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-lg bg-bg-tertiary border border-border-subtle flex items-center justify-center text-lg">
-              <span className="text-text-tertiary select-none">👤</span>
+            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-border-subtle flex-shrink-0">
+              <img src="/arjun.jpg" alt="Arjun Varshney" className="w-full h-full object-cover" style={{ objectPosition: "50% 25%" }} />
             </div>
             <div>
               <h3 className="text-base font-semibold text-text-primary">{siteConfig.name}</h3>

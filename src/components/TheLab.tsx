@@ -7,11 +7,11 @@ import { labEntries } from "@/lib/data";
 import SectionWrapper from "./SectionWrapper";
 
 const statusConfig = {
-  hypothesis: { emoji: "💡", label: "Hypothesis", color: "text-accent-purple" },
-  experimenting: { emoji: "🧪", label: "Experimenting", color: "text-accent-primary" },
-  "in-progress": { emoji: "🔬", label: "In Progress", color: "text-accent-secondary" },
-  concluded: { emoji: "✅", label: "Concluded", color: "text-accent-green" },
-  failed: { emoji: "💀", label: "Failed", color: "text-accent-red" },
+  hypothesis: { emoji: "?", label: "Hypothesis", color: "text-accent-purple" },
+  experimenting: { emoji: "~", label: "Experimenting", color: "text-accent-primary" },
+  "in-progress": { emoji: ">", label: "In Progress", color: "text-accent-secondary" },
+  concluded: { emoji: "+", label: "Concluded", color: "text-accent-green" },
+  failed: { emoji: "x", label: "Failed", color: "text-accent-red" },
 } as const;
 
 type FilterStatus = "all" | keyof typeof statusConfig;

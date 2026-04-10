@@ -48,6 +48,27 @@ const photos: Photo[] = [
     x: 10,
     y: 10,
   },
+  {
+    src: "/adventures/photo6.jpg",
+    caption: "starry nights and mountain silhouettes that reset your perspective on everything",
+    rotate: 3,
+    x: -50,
+    y: -20,
+  },
+  {
+    src: "/adventures/photo7.jpg",
+    caption: "river trails and misty mornings — the best conversations happen on walks like these",
+    rotate: -4,
+    x: 45,
+    y: 30,
+  },
+  {
+    src: "/adventures/photo8.jpg",
+    caption: "waterfalls that remind you nature ships features without a sprint planning meeting",
+    rotate: 6,
+    x: -30,
+    y: -15,
+  },
 ];
 
 function Polaroid({
@@ -76,8 +97,8 @@ function Polaroid({
       className="absolute cursor-grab active:cursor-grabbing select-none"
       style={{
         zIndex: index,
-        left: `${12 + (index % 3) * 28}%`,
-        top: `${8 + Math.floor(index / 3) * 38}%`,
+        left: `${5 + (index % 4) * 22}%`,
+        top: `${5 + Math.floor(index / 4) * 40}%`,
       }}
     >
       <div className="bg-[#F5F0E8] p-2.5 pb-0 shadow-xl rounded-sm" style={{ width: "clamp(160px, 20vw, 250px)" }}>
@@ -86,9 +107,12 @@ function Polaroid({
           className="w-full aspect-[4/3] rounded-sm overflow-hidden flex items-center justify-center text-3xl"
           style={{ backgroundColor: "#e8e0d0" }}
         >
-          <span className="text-4xl opacity-30 select-none">
-            {["🏔️", "🌊", "🌅", "🏙️", "🌿"][index % 5]}
-          </span>
+          <img
+            src={photo.src}
+            alt={photo.caption}
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
         </div>
 
         {/* Caption */}

@@ -10,6 +10,7 @@ interface WorkCardProps {
     description: string;
     tags: string[];
     year: string;
+    thumbnail: string;
   };
 }
 
@@ -17,8 +18,19 @@ export default function WorkCard({ project }: WorkCardProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group h-full block p-5 md:p-6 rounded-2xl bg-bg-secondary border border-border-subtle hover:border-accent-primary/40 transition-all duration-300"
+      className="group h-full block rounded-2xl bg-bg-secondary border border-border-subtle hover:border-accent-primary/40 transition-all duration-300 overflow-hidden"
     >
+      {/* Thumbnail */}
+      <div className="aspect-[3/1] overflow-hidden relative">
+        <img
+          src={project.thumbnail}
+          alt={project.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary via-bg-secondary/30 to-transparent" />
+      </div>
+
+      <div className="p-5 md:p-6 pt-3">
       <div className="flex items-start justify-between gap-3 mb-2">
         <h3 className="text-base font-semibold text-text-primary group-hover:text-accent-primary transition-colors duration-200 leading-snug">
           {project.title}
@@ -47,6 +59,7 @@ export default function WorkCard({ project }: WorkCardProps) {
         <span className="text-[10px] font-mono text-text-tertiary">
           {project.year}
         </span>
+      </div>
       </div>
     </Link>
   );

@@ -15,7 +15,7 @@ export default function ResumePage() {
       <SectionWrapper
         eyebrow="Resume"
         title="The Director's Cut"
-        description="My resume, but alive. Click the 🧠 icons for behind-the-scenes commentary on each bullet point."
+        description="My resume, but alive. Click the brain icons for behind-the-scenes commentary on each bullet point."
       >
         <Resume />
       </SectionWrapper>

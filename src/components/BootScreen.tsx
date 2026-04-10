@@ -105,9 +105,9 @@ export default function BootScreen() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2 }}
                   className="font-mono text-sm flex items-center gap-2"
-                  style={{ color: "#6C9CFC" }}
+                  style={{ color: "#E5E5E5" }}
                 >
-                  <span style={{ color: "#6C9CFC", opacity: 0.6 }}>►</span>
+                  <span style={{ color: "#E5E5E5", opacity: 0.6 }}>►</span>
                   <span>{line}</span>
                 </motion.p>
               ))}
@@ -122,7 +122,7 @@ export default function BootScreen() {
                 <motion.div
                   className="h-full rounded-sm"
                   style={{
-                    background: "#6C9CFC",
+                    background: "#E5E5E5",
                     width: `${progress}%`,
                   }}
                 />
