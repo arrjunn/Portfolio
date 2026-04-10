@@ -20,6 +20,7 @@ export default function TextScramble({
   const [displayed, setDisplayed] = useState(text);
   const [started, setStarted] = useState(false);
   const prefersReducedMotion = useRef(false);
+  const intervalsRef = useRef<ReturnType<typeof setInterval>[]>([]);
 
   useEffect(() => {
     prefersReducedMotion.current = window.matchMedia(
@@ -32,7 +33,6 @@ export default function TextScramble({
       return;
     }
 
-    // Start with random chars
     setDisplayed(
       text
         .split("")
@@ -61,10 +61,10 @@ export default function TextScramble({
 
         if (resolved >= totalChars) {
           clearInterval(interval);
+          clearInterval(scrambleInterval);
         }
       }, resolveInterval);
 
-      // Also scramble unresolved chars rapidly
       const scrambleInterval = setInterval(() => {
         setDisplayed((prev) =>
           prev
@@ -78,13 +78,13 @@ export default function TextScramble({
         );
       }, 40);
 
-      return () => {
-        clearInterval(interval);
-        clearInterval(scrambleInterval);
-      };
+      intervalsRef.current = [interval, scrambleInterval];
     }, delay);
 
-    return () => clearTimeout(delayTimer);
+    return () => {
+      clearTimeout(delayTimer);
+      intervalsRef.current.forEach(clearInterval);
+    };
   }, [text, delay, duration]);
 
   return (

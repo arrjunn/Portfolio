@@ -152,7 +152,7 @@ export default function KonamiWrapper() {
           <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#222]" style={{ background: "#161616" }}>
             <div className="flex items-center gap-2">
               <div className="flex gap-1.5">
-                <button onClick={() => setOpen(false)} className="w-3 h-3 rounded-full bg-[#FF5F57] hover:brightness-110" />
+                <button onClick={() => setOpen(false)} className="w-3 h-3 rounded-full bg-[#FF5F57] hover:brightness-110" aria-label="Close terminal" />
                 <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
                 <div className="w-3 h-3 rounded-full bg-[#28C840]" />
               </div>

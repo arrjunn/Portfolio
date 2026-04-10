@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
+
 import { labEntries } from "@/lib/data";
 import SectionWrapper from "./SectionWrapper";
 
@@ -31,6 +31,7 @@ export default function TheLab() {
     { value: "experimenting", label: "Experimenting" },
     { value: "hypothesis", label: "Hypothesis" },
     { value: "in-progress", label: "In Progress" },
+    { value: "concluded", label: "Concluded" },
     { value: "failed", label: "Failed" },
   ];
 
@@ -105,10 +106,6 @@ export default function TheLab() {
                       ))}
                     </div>
                   </div>
-                  <ArrowRight
-                    size={16}
-                    className="text-text-tertiary group-hover:text-accent-primary group-hover:translate-x-1 transition-all duration-200 flex-shrink-0 mt-2"
-                  />
                 </div>
               </motion.div>
             );

@@ -24,6 +24,7 @@ export default function Footer() {
             I&apos;m always open to interesting conversations, collaboration
             opportunities, and new challenges.
           </p>
+          <div className="flex flex-wrap justify-center gap-3">
           <a
             href={siteConfig.calendarUrl}
             target="_blank"
@@ -44,6 +45,7 @@ export default function Footer() {
             <Copy size={14} />
             Copy Email
           </button>
+          </div>
         </div>
 
         {/* Links + Info */}
