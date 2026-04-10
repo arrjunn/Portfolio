@@ -21,7 +21,7 @@ function AnnotationBubble({ text }: { text: string }) {
       exit={{ opacity: 0, y: -5 }}
       className="mt-2 ml-4 p-3 rounded-lg bg-accent-purple/10 border border-accent-purple/20 text-sm text-text-secondary leading-relaxed"
     >
-      <span className="text-text-tertiary font-mono">// </span>
+      <span className="text-text-tertiary font-mono">{"// "}</span>
       {text}
     </motion.div>
   );
