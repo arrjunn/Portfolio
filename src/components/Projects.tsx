@@ -30,7 +30,7 @@ function ProjectCard({
     >
       <Link
         href={`/projects/${project.slug}`}
-        className="group block rounded-2xl overflow-hidden bg-bg-secondary border border-border-subtle hover:border-border-hover hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5 transition-all duration-200"
+        className="group h-full flex flex-col rounded-2xl overflow-hidden bg-bg-secondary border border-border-subtle hover:border-border-hover hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5 transition-all duration-200"
       >
         {/* Thumbnail */}
         <div className="aspect-video bg-bg-tertiary relative overflow-hidden">
@@ -43,7 +43,7 @@ function ProjectCard({
         </div>
 
         {/* Content */}
-        <div className="p-5 md:p-6">
+        <div className="p-5 md:p-6 flex-1 flex flex-col">
           <div className="flex items-start justify-between gap-3 mb-2">
             <h3 className="text-lg font-semibold text-text-primary group-hover:text-accent-primary transition-colors duration-200">
               {project.title}
@@ -53,9 +53,10 @@ function ProjectCard({
               className="text-text-tertiary group-hover:text-accent-primary group-hover:translate-x-1 transition-all duration-200 flex-shrink-0 mt-1"
             />
           </div>
-          <p className="text-sm text-text-secondary leading-relaxed mb-4">
+          <p className="text-sm text-text-secondary leading-relaxed mb-4 line-clamp-3">
             {project.description}
           </p>
+          <div className="mt-auto">
           {"competition" in project && project.competition && (
             <p className="text-[10px] font-mono text-accent-primary mb-3">
               {project.competition}
@@ -88,6 +89,7 @@ function ProjectCard({
                 {project.year}
               </span>
             </div>
+          </div>
           </div>
         </div>
       </Link>
