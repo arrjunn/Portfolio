@@ -126,6 +126,28 @@ export const projects = [
     documentUrl: "https://drive.google.com/file/d/1oaooqga5ok1ClRsyOduk8Q4jBK2R6IzA/view",
   },
   {
+    slug: "train-delay-prediction",
+    title: "Train Delay Prediction — Operational Optimization",
+    description:
+      "Built a predictive intelligence system using ML to forecast train delays and enable proactive interventions. Gradient Boosting classifier + Random Forest regressor achieving >99% accuracy on 100K+ records. Won 1st Prize at StratQuest, IIT Kharagpur.",
+    tags: ["AI/ML", "Data Science", "Operations", "Python"],
+    year: "2026",
+    thumbnail: "/projects/train-delay.jpg",
+    featured: false,
+    competition: "IIT Kharagpur — StratQuest, Spring Fest'26 (1st Prize)",
+  },
+  {
+    slug: "karyawar",
+    title: "Karyawar — Cash Flow Transformation Strategy",
+    description:
+      "Strategic advisory for inverting the cash cycle of a celebration wear brand. Designed 'Celebration Harvest' — a prepaid savings model generating Rs.250 Cr advance cash float in Year 1, reducing debtor days from 40 to <25.",
+    tags: ["Business Strategy", "Cash Flow", "Retail", "D2C"],
+    year: "2026",
+    thumbnail: "/projects/karyawar.jpg",
+    featured: false,
+    competition: "NIT Surathkal — Biz Blitz, KRISIS 2026",
+  },
+  {
     slug: "nocaps",
     title: "NoCaps — Consumer Brand Strategy",
     description:
@@ -653,6 +675,42 @@ export const caseStudies: CaseStudy[] = [
       { id: "solution", type: "solution", title: "The Strategy", subtitle: "Creator-first luxury ecosystem", content: "Designed a repositioning strategy that transforms Phulkari into a premium, scalable luxury brand. A creator-first model that integrates storytelling, authenticity, and global market expansion.", bullets: ["Repositioned from ethnic wear to 'wearable art' — luxury positioning", "Creator-first model: artisan stories as the brand narrative", "Storytelling-driven marketing: each piece has a provenance story", "Global expansion strategy targeting diaspora and luxury conscious consumers"] },
       { id: "impact", type: "impact", title: "The Impact", content: "Preserves cultural heritage while enabling sustainable livelihoods for artisans, proving that social impact and premium business models can coexist.", metrics: [{ label: "Competition", value: "IIM Bangalore" }] },
       { id: "reflections", type: "reflections", title: "Reflections", content: "This project proved that social impact and premium business models aren't opposites — they're complementary. The artisan story IS the luxury differentiator.", bullets: ["Social impact and premium pricing can coexist", "Storytelling is the moat in luxury", "Creator-first models build authenticity that can't be copied"] },
+    ],
+  },
+  // ---- Train Delay Prediction (IIT Kharagpur — 1st Prize) ----
+  {
+    slug: "train-delay-prediction",
+    heroTitle: "Train Delay Prediction",
+    heroSubtitle: "Operational Optimization with ML",
+    tldr: "Built ML models to predict train delays and enable proactive interventions. Gradient Boosting + Random Forest achieving >99% accuracy on 100K+ records. On-time performance projected to improve from 67% to 75-80%. Won 1st Prize at StratQuest, IIT Kharagpur Spring Fest'26.",
+    role: "Data Science & Strategy",
+    timeline: "Jan 2026",
+    team: "Team of 4 — IIT Kharagpur StratQuest, Spring Fest'26",
+    sections: [
+      { id: "problem", type: "problem", title: "The Problem", subtitle: "Railway delays are reactive, not predictive", content: "Large-scale railway operations face persistent and cascading train delays. Delays reduce passenger trust, disrupt crew and asset scheduling, and increase operational costs. Existing systems are reactive — they respond to delays after they happen instead of predicting and preventing them.", bullets: ["No real-time, data-driven delay prediction integrated into operations", "Lack of early-warning mechanisms for high-risk trains", "Limited ability to intervene before delays propagate network-wide", "Existing systems treat all trains equally — no risk-based prioritization"] },
+      { id: "research", type: "research", title: "The Research", subtitle: "100K+ records of operational data", content: "We analyzed 100,000+ train operational records including scheduled vs actual arrival/departure timestamps, weather data, maintenance flags, and passenger load. Key finding: delays propagate along shared tracks — one delayed train significantly increases risk for all following trains.", bullets: ["Cleaned and validated operational time-series data (100K+ records)", "Identified departure delay as the strongest predictor of arrival delay", "Found that unscheduled stops and route complexity amplify delays", "Discovered delay propagation is the #1 cascading risk factor"] },
+      { id: "decisions", type: "decisions", title: "Key Decisions", subtitle: "Classification + Regression dual approach", content: "We chose a dual-model approach: a Gradient Boosting classifier to flag trains likely to exceed 15-minute delay, and a Random Forest regressor to predict precise arrival delay (ETA). This gives operators both a binary risk flag AND a continuous time estimate.", bullets: ["Gradient Boosting for binary delay classification (>15 min threshold)", "Random Forest for continuous delay regression (ETA prediction)", "Feature engineering: time-based features, delay propagation lags, cyclical encodings", "Priority scoring: P(delay) x Expected Delay x Propagation Risk Factor"] },
+      { id: "solution", type: "solution", title: "The Solution", subtitle: "End-to-end delay prediction pipeline", content: "Built a predictive intelligence system: raw operational data flows through preprocessing and EDA, feeds into classification and regression models, ranks trains by intervention priority, and maps predictions to operational levers (crew allocation, platform management, tactical routing).", bullets: ["Classification model flags high-risk trains (ROC-AUC: 0.747)", "Regression model predicts arrival delay (~9 min average error)", "87% of predictions within +/-15 minutes of actual delay", "Priority scoring ranks trains for intervention — higher score = higher ROI"] },
+      { id: "impact", type: "impact", title: "The Impact", subtitle: "From 67% to 75-80% on-time performance", content: "The system projects significant improvements in railway punctuality through predictive, data-driven operations.", metrics: [{ label: "Predictive Accuracy", value: ">99%" }, { label: "On-Time Performance", value: "67% to 80%" }, { label: "Average Delay Reduction", value: "17 to 13 min" }, { label: "Extreme Delays", value: "<1.5%" }] },
+      { id: "reflections", type: "reflections", title: "Reflections", subtitle: "What winning at IIT Kharagpur taught me", content: "This project was presented at StratQuest, a multi-round AI/ML business case competition at IIT Kharagpur's Spring Fest'26, where we won 1st Prize. The experience reinforced that predictive analytics is only valuable if it maps to operational decisions — a model that predicts delays but doesn't tell operators WHAT TO DO is useless.", bullets: ["Prediction without actionable intervention is just a dashboard", "The priority scoring framework (risk x delay x propagation) was the differentiator", "Early intervention is the most powerful operational lever", "Interacting with participants from across the country showed how differently people approach the same problem"] },
+    ],
+  },
+  // ---- Karyawar (NIT Surathkal — Biz Blitz, KRISIS 2026) ----
+  {
+    slug: "karyawar",
+    heroTitle: "Karyawar",
+    heroSubtitle: "Cash Flow Transformation for Celebration Wear",
+    tldr: "Identified a 3-layer structural trap bleeding Karyawar's cash (inventory push, principal-agent divorce, seasonal mismatch). Designed 'Celebration Harvest' — a prepaid savings model adapted from Tanishq's Golden Harvest — projecting Rs.250 Cr advance cash float in Year 1 with debtor days dropping from 40 to <25.",
+    role: "Strategy & Business Case",
+    timeline: "Feb 2026",
+    team: "Team of 4 — NIT Surathkal Biz Blitz, KRISIS 2026",
+    sections: [
+      { id: "problem", type: "problem", title: "The Problem", subtitle: "Growth without cash — a 3-layer structural trap", content: "Karyawar, one of India's most trusted celebration wear brands, was growing revenue but bleeding cash. Store foot traffic was healthy, sales continued to grow, and operating margins were among the best in the industry — but cash from operations had fallen significantly. The 40-day receivable cycle wasn't a payment-terms issue. It reflected a deeper structural problem.", bullets: ["Layer 1: Inventory Push Trap — 52-week refresh cycle pushing inventory to franchisees whether it sold or not. Revenue recognized when goods ship, not when consumers buy.", "Layer 2: Principal-Agent Divorce — Karyawar owns the brand but franchisees own the customer relationship. No visibility into real demand, purchase timing, or repeat behavior.", "Layer 3: Seasonal Cash Mismatch — 4.6M weddings (Nov-Dec 2025 alone) generating Rs.6.5L Cr, but Karyawar produces year-round while purchases happen in spikes.", "Result: Rs.200-400 Cr trapped in working capital, growing reliance on franchise-led sales with delayed payments"] },
+      { id: "research", type: "research", title: "The Research", subtitle: "Why all 3 obvious options were traps", content: "The board presented three options: event management expansion, jewellery entry, and operating model refinement. We analyzed each against five criteria — solving root cause, capital required, brand coherence, customer ownership, execution complexity, competitive moat, and time to impact.", bullets: ["Event Management — HARD REJECT: Breaks the asset-light model, adds heavy operational risk, cash cycles worsen due to milestone-based spending", "Jewellery (Full Launch) — SEDUCTIVE TRAP: Gold inventory locks Rs.50-100 Cr working capital, puts Karyawar against Tanishq, Kalyan, and Malabar", "OpEx Refinement — NECESSARY BUT INSUFFICIENT: Tightening receivables may reduce debtor days 8-12 days but structural issues remain", "Key insight: All three options treated symptoms. None addressed the root cause — Karyawar doesn't own its customer."] },
+      { id: "decisions", type: "decisions", title: "Key Decisions", subtitle: "Inverting the cash cycle entirely", content: "Instead of optimizing the existing cash cycle, we proposed replacing it. The 'Celebration Harvest' model adapts Tanishq's proven Golden Harvest scheme to celebration wear — collecting cash 10 months BEFORE a single outfit moves. This doesn't optimize the cash cycle. It inverts it.", bullets: ["Families enroll contributing Rs.5,000/month for 10 months. At maturity: Rs.50,000 corpus + 15% bonus value (~Rs.7,500)", "Cash flows to Karyawar directly (bypasses franchise bottleneck) — solving the principal-agent problem", "Each enrollment reveals: wedding date, city, family size, budget range — giving Karyawar demand visibility for the first time", "Karyawar Vachan (Best Price Guarantee): 'If you find the same quality outfit cheaper within 30 days, we gift your family 1 gram of gold as shagun' — near-zero cost, massive trust signal"] },
+      { id: "solution", type: "solution", title: "The 3-Phase Plan", subtitle: "Fix, Launch, Expand over 36 months", content: "Phase 1 (Months 0-8): Fix & Fund — Sell franchise receivables to NBFC at 2-3% discount, unlocking Rs.200-400 Cr immediately. Early-payment incentives (2% discount for 15-day payment). D2C channel push shifting 10-15% revenue to e-commerce. Phase 2 (Months 6-18): Launch Celebration Harvest in 10 major wedding markets. Phase 3 (Months 18-36): Expand into fashion jewellery and bridal suite experiences.", bullets: ["Phase 1: Receivable factoring + D2C push = Rs.200-400 Cr working capital released", "Phase 2: 50,000 Harvest accounts in Year 1 at Rs.5,000/month = Rs.250 Cr advance inflow. Bonus cost Rs.37.5 Cr. Net float: Rs.212.5 Cr", "Phase 3: Fashion jewellery expansion (Rs.2,000-50,000 range) via consignment model. Bridal suite experience (lehenga + jewellery + accessories in single appointment)", "Shaadi Countdown: 10-month digital wedding journey — bridal moodboards, trending colors, groom styling, outfit previews, jewellery pairings"] },
+      { id: "impact", type: "impact", title: "Projected Impact", subtitle: "Rs.250 Cr advance cash float in Year 1", content: "The Celebration Harvest model projects transformative financial impact by collecting cash before inventory moves — a complete inversion of the traditional retail cash cycle.", metrics: [{ label: "Advance Cash Float", value: "Rs.250 Cr" }, { label: "Cash Collection", value: "10 months before purchase" }, { label: "Basket Size Increase", value: "+30%" }, { label: "Debtor Days", value: "<25 (from 40)" }] },
+      { id: "reflections", type: "reflections", title: "Reflections", subtitle: "We're not optimizing the cash cycle — we're replacing it", content: "Every company in Indian retail is trying to sell to the customer at the moment of purchase. We proposed that Karyawar captures the customer at the moment of decision — 10 months before anyone else even knows a wedding is happening. The biggest insight: the best business strategy doesn't optimize a broken system. It replaces the system entirely.", bullets: ["Customer ownership is the ultimate competitive moat in Indian retail", "Tanishq's Golden Harvest proved the prepaid model works — we adapted it to celebration wear", "The 3-layer structural analysis (inventory push, principal-agent, seasonal mismatch) was the breakthrough — it reframed the problem from 'cash cycle' to 'business model'", "Benchmarked against Vedant Fashions (Manyavar) — their 163-day debtor cycle and 54% market cap crash proved the urgency"] },
     ],
   },
   // ---- NoCaps ----
