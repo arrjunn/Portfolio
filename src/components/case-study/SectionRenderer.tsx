@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import type { CaseStudySection } from "@/lib/data";
-import MetricCard from "./MetricCard";
 
 export default function SectionRenderer({ section }: { section: CaseStudySection }) {
   const ref = useRef<HTMLElement>(null);
@@ -58,12 +57,12 @@ export default function SectionRenderer({ section }: { section: CaseStudySection
         {section.metrics && section.metrics.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
             {section.metrics.map((m) => (
-              <MetricCard
-                key={m.label}
-                label={m.label}
-                value={parseInt(m.value) || 0}
-                suffix={m.value.includes("+") ? "+" : undefined}
-              />
+              <div key={m.label} className="p-5 rounded-xl bg-bg-tertiary/50 border border-border-subtle text-center">
+                <p className="text-2xl md:text-3xl font-display font-bold text-accent-primary mb-1">
+                  {m.value}
+                </p>
+                <p className="text-xs font-mono text-text-tertiary">{m.label}</p>
+              </div>
             ))}
           </div>
         )}

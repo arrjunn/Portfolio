@@ -2,7 +2,7 @@
 
 A product manager's portfolio built as a product itself. Not a template — every feature exists because it demonstrates a PM skill.
 
-**Live:** [arjunvarshney.dev](https://arjunvarshney.dev)
+**Live:** [arjunvportfolio.vercel.app](https://arjunvportfolio.vercel.app)
 
 ---
 

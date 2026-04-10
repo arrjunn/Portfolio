@@ -2,14 +2,13 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Download, Brain } from "lucide-react";
+import { Download, ChevronRight } from "lucide-react";
 import {
   siteConfig,
   workExperience,
   resumeSummary,
   education,
   skills,
-  certifications,
   achievements,
   resumeAsSpec,
 } from "@/lib/data";
@@ -22,7 +21,7 @@ function AnnotationBubble({ text }: { text: string }) {
       exit={{ opacity: 0, y: -5 }}
       className="mt-2 ml-4 p-3 rounded-lg bg-accent-purple/10 border border-accent-purple/20 text-sm text-text-secondary leading-relaxed"
     >
-      <span className="text-accent-purple font-medium font-mono">[i] </span>
+      <span className="text-text-tertiary font-mono">// </span>
       {text}
     </motion.div>
   );
@@ -50,7 +49,7 @@ function BulletItem({
             className="flex-shrink-0 mt-0.5 p-1 rounded-md hover:bg-accent-purple/10 text-text-tertiary hover:text-accent-purple transition-colors duration-200"
             aria-label="Show annotation"
           >
-            <Brain size={14} />
+            <ChevronRight size={14} />
           </button>
         </div>
         {showAnnotation && <AnnotationBubble text={annotation} />}
@@ -119,33 +118,30 @@ export default function Resume() {
             {siteConfig.location} · {siteConfig.email}
           </p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-bg-secondary border border-border-subtle text-sm text-text-secondary hover:text-text-primary hover:border-border-hover transition-all duration-200">
+        <a href="/ArjunV_Resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-bg-secondary border border-border-subtle text-sm text-text-secondary hover:text-text-primary hover:border-border-hover transition-all duration-200">
           <Download size={14} />
           PDF
-        </button>
+        </a>
       </div>
 
       {/* Annotation hint */}
-      <div className="mb-8 p-3 rounded-lg bg-accent-purple/5 border border-accent-purple/15 text-xs text-text-tertiary flex items-center gap-2">
-        <Brain size={14} className="text-accent-purple" />
-        Click the{" "}
-        <Brain size={10} className="text-accent-purple inline" /> icons
-        for director&apos;s commentary — my personal context behind each bullet.
+      <div className="mb-10 p-4 rounded-xl bg-bg-secondary border border-border-subtle text-sm text-text-secondary">
+        Click the arrow icons next to each bullet for my personal commentary — the thinking behind the outcomes.
       </div>
 
       {/* Summary */}
-      <div className="mb-8">
-        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-3">
+      <div className="mb-10 pb-8 border-b border-border-subtle">
+        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-4">
           {specMode ? "Product Vision" : "Summary"}
         </h2>
-        <p className="text-sm text-text-secondary leading-relaxed">
+        <p className="text-[15px] text-text-secondary leading-relaxed">
           {resumeSummary}
         </p>
       </div>
 
       {/* Experience */}
-      <div className="mb-8">
-        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-4">
+      <div className="mb-10 pb-8 border-b border-border-subtle">
+        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-6">
           {specMode ? "Release Notes" : "Experience"}
         </h2>
         <div className="space-y-6">
@@ -198,8 +194,8 @@ export default function Resume() {
       </div>
 
       {/* Skills */}
-      <div className="mb-8">
-        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-3">
+      <div className="mb-10 pb-8 border-b border-border-subtle">
+        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-4">
           Skills & Tools
         </h2>
         <div className="flex flex-wrap gap-2">
@@ -215,8 +211,8 @@ export default function Resume() {
       </div>
 
       {/* Languages */}
-      <div className="mb-8">
-        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-3">
+      <div className="mb-10 pb-8 border-b border-border-subtle">
+        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-4">
           Languages
         </h2>
         <div className="flex flex-wrap gap-4">
@@ -232,39 +228,21 @@ export default function Resume() {
       </div>
 
       {/* Achievements */}
-      <div className="mb-8">
-        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-3">
+      <div>
+        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-4">
           Achievements
         </h2>
-        <ul className="space-y-1.5">
+        <div className="space-y-2.5">
           {achievements.map((a) => (
-            <li
+            <div
               key={a}
-              className="text-sm text-text-secondary flex items-start gap-2"
+              className="flex items-start gap-3 p-3 rounded-lg bg-bg-secondary/50 border border-border-subtle text-sm text-text-secondary"
             >
               <span className="mt-1 w-1.5 h-1.5 rounded-full bg-accent-primary flex-shrink-0" />
               {a}
-            </li>
+            </div>
           ))}
-        </ul>
-      </div>
-
-      {/* Certifications */}
-      <div>
-        <h2 className="text-xs font-mono font-medium text-accent-primary uppercase tracking-wider mb-3">
-          Certifications
-        </h2>
-        <ul className="space-y-1.5">
-          {certifications.map((cert) => (
-            <li
-              key={cert}
-              className="text-sm text-text-secondary flex items-start gap-2"
-            >
-              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-text-tertiary flex-shrink-0" />
-              {cert}
-            </li>
-          ))}
-        </ul>
+        </div>
       </div>
     </motion.div>
   );

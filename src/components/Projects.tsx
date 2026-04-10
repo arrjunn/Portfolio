@@ -81,7 +81,7 @@ function ProjectCard({
                   onClick={(e) => e.stopPropagation()}
                   className="text-[10px] font-mono text-text-tertiary hover:text-text-primary underline underline-offset-2 transition-colors"
                 >
-                  View Doc
+                  {(project.documentUrl as string)?.includes("vercel.app") ? "Live Link" : "View Doc"}
                 </a>
               )}
               <span className="text-xs text-text-tertiary font-mono">

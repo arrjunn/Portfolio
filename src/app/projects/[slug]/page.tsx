@@ -69,7 +69,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-bg-secondary border border-border-subtle text-sm font-medium text-text-primary hover:border-border-hover hover:bg-bg-hover transition-all duration-200"
           >
-            View Full Document
+            {(project as { documentUrl?: string }).documentUrl?.includes("vercel.app") ? "View Live" : "View Document"}
             <ArrowUpRight size={14} />
           </a>
         )}

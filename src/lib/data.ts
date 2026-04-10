@@ -30,12 +30,10 @@ export const recentAchievement = {
 };
 
 export const projects = [
-  // ---- Featured (shown on homepage bento) ----
   {
     slug: "backlog",
     title: "Backlog — AI-Powered Feature Prioritization SaaS",
-    description:
-      "Built an AI auto-triage system that classifies, prioritizes, and clusters incoming feature requests using a RAG pipeline and K-means++ clustering. Deployed across 48 production instances.",
+    description: "Built an AI auto-triage system that classifies, prioritizes, and clusters incoming feature requests using a RAG pipeline and K-means++ clustering. Deployed across 48 production instances.",
     tags: ["AI", "RAG", "SaaS", "Product"],
     year: "2026",
     thumbnail: "/projects/backlog.jpg",
@@ -43,10 +41,20 @@ export const projects = [
     documentUrl: "https://backlog-the-ultimate-feature-priori.vercel.app",
   },
   {
+    slug: "train-delay-prediction",
+    title: "Train Delay Prediction — Operational Optimization",
+    description: "Built a predictive intelligence system using ML to forecast train delays and enable proactive interventions. Gradient Boosting + Random Forest achieving >99% accuracy on 100K+ records. Won 1st Prize at StratQuest, IIT Kharagpur.",
+    tags: ["AI/ML", "Data Science", "Operations", "Python"],
+    year: "2026",
+    thumbnail: "/projects/train-delay.jpg",
+    featured: true,
+    competition: "IIT Kharagpur — StratQuest, Spring Fest'26 (1st Prize)",
+    documentUrl: "https://drive.google.com/file/d/1MHVFL8CvKJ48dP_Lgh_IMgqiXgeWXNt3/view",
+  },
+  {
     slug: "post-event-retention",
     title: "Post-Event Retention Automation",
-    description:
-      "Designed an A/B testing pipeline with automated content generation for 50+ users via n8n, Twilio & Llama3 AI. Built a VIP alert system that reduced response latency by 95%.",
+    description: "Designed an A/B testing pipeline with automated content generation for 50+ users via n8n, Twilio & Llama3 AI. Built a VIP alert system that reduced response latency by 95%.",
     tags: ["n8n", "Twilio", "Llama3", "A/B Testing"],
     year: "2026",
     thumbnail: "/projects/retention.jpg",
@@ -55,8 +63,7 @@ export const projects = [
   {
     slug: "splitwise-teardown",
     title: "Splitwise Product Teardown",
-    description:
-      "Focused on transforming Splitwise from a one-time settlement tool into a household-first shared-finance companion. D30 retention drops by 60% once a group becomes inactive — proposed Household Continuity Rate as the new North Star.",
+    description: "Focused on transforming Splitwise from a one-time settlement tool into a household-first shared-finance companion. D30 retention drops by 60% once a group becomes inactive — proposed Household Continuity Rate as the new North Star.",
     tags: ["Product Strategy", "Retention", "Teardown"],
     year: "2025",
     thumbnail: "/projects/splitwise.jpg",
@@ -64,98 +71,80 @@ export const projects = [
     competition: "IIM Calcutta",
     documentUrl: "https://drive.google.com/file/d/1SWwWIwtYoHnlZaOF2M1GcQqaTwXMEhJQ/view",
   },
-  // ---- Competition Projects (from hackathons) ----
   {
     slug: "assistly",
     title: "Assistly — AI Productivity App",
-    description:
-      "Led user research and problem discovery to design an AI productivity assistant that helps users prioritize tasks and reduce cognitive overload. Defined personas, mapped workflows, and structured an MVP balancing personalization with simplicity.",
+    description: "Led user research and problem discovery to design an AI productivity assistant that helps users prioritize tasks and reduce cognitive overload. Defined personas, mapped workflows, and structured an MVP balancing personalization with simplicity.",
     tags: ["AI", "UX Research", "MVP Design"],
     year: "2025",
     thumbnail: "/projects/assistly.jpg",
-    featured: false,
+    featured: true,
     competition: "IIT Roorkee E-Summit",
     documentUrl: "https://drive.google.com/file/d/1tYW5Vs044DHCu5_-n6OCi56UtmqqeS8V/view",
   },
   {
+    slug: "karyawar",
+    title: "Karyawar — Cash Flow Transformation Strategy",
+    description: "Strategic advisory for inverting the cash cycle of a celebration wear brand. Designed 'Celebration Harvest' — a prepaid savings model generating Rs.250 Cr advance cash float in Year 1, reducing debtor days from 40 to <25.",
+    tags: ["Business Strategy", "Cash Flow", "Retail", "D2C"],
+    year: "2026",
+    thumbnail: "/projects/karyawar.jpg",
+    featured: true,
+    competition: "NIT Surathkal — Biz Blitz, KRISIS 2026",
+    documentUrl: "https://drive.google.com/file/d/1HwaROaBTBU7WNklh_znkebRL0lbq43bJ/view",
+  },
+  {
     slug: "caro",
     title: "Caro — HealthTech Elder Care",
-    description:
-      "Contributed to product strategy and human-centered design for a non-intrusive elder care solution focused on dignity, privacy, and trust. Shaped the product vision around both caregivers and seniors, emphasizing accessibility and ethical design.",
+    description: "Contributed to product strategy and human-centered design for a non-intrusive elder care solution focused on dignity, privacy, and trust. Shaped the product vision around both caregivers and seniors, emphasizing accessibility and ethical design.",
     tags: ["HealthTech", "Product Strategy", "Accessibility"],
     year: "2025",
     thumbnail: "/projects/caro.jpg",
-    featured: false,
+    featured: true,
     competition: "IIT Roorkee E-Summit",
     documentUrl: "https://drive.google.com/file/d/11z33-vQjVRvPdQE80iFk8dmB3UmUv5kk/view",
   },
   {
     slug: "hatk",
     title: "Hatk — Experiential Photobooth Startup",
-    description:
-      "Worked on market research, consumer insights, and product strategy to transform photobooths from a rental service into an experience-driven product. Designed monetization models across B2C and B2B focused on Gen Z virality and emotional engagement.",
+    description: "Worked on market research, consumer insights, and product strategy to transform photobooths from a rental service into an experience-driven product. Designed monetization models across B2C and B2B focused on Gen Z virality and emotional engagement.",
     tags: ["Market Research", "B2C/B2B", "Growth Strategy"],
     year: "2025",
     thumbnail: "/projects/hatk.jpg",
-    featured: false,
+    featured: true,
     competition: "IIT Guwahati E-Summit",
     documentUrl: "https://drive.google.com/file/d/19tNdf2yl83LRUjtenDbZaaX2LIqTCaix/view",
   },
   {
     slug: "hiresight",
     title: "HireSight — AI Hiring & Retention Platform",
-    description:
-      "Defined core hiring and attrition problems faced by startups and SMEs, translating them into data-driven product features: employee archetypes, attrition prediction, and intelligent hiring workflows. Prioritized features aligned with measurable business outcomes.",
+    description: "Defined core hiring and attrition problems faced by startups and SMEs, translating them into data-driven product features: employee archetypes, attrition prediction, and intelligent hiring workflows. Prioritized features aligned with measurable business outcomes.",
     tags: ["AI", "HR Tech", "Data-Driven PM"],
     year: "2025",
     thumbnail: "/projects/hiresight.jpg",
-    featured: false,
+    featured: true,
     competition: "IIITDM Jabalpur TechFest",
     documentUrl: "https://drive.google.com/file/d/1x_O0yzXh5dmi_oEKwb2Iv0rwcMwBDAFv/view",
   },
   {
     slug: "phulkari",
     title: "Phulkari — Cultural & Luxury Brand Strategy",
-    description:
-      "Worked on market repositioning and product narrative strategy to transform Phulkari from a declining craft into a premium, scalable luxury ecosystem. Designed a creator-first model integrating storytelling, authenticity, and global market expansion.",
+    description: "Worked on market repositioning and product narrative strategy to transform Phulkari from a declining craft into a premium, scalable luxury ecosystem. Designed a creator-first model integrating storytelling, authenticity, and global market expansion.",
     tags: ["Brand Strategy", "Luxury", "Social Impact"],
     year: "2025",
     thumbnail: "/projects/phulkari.jpg",
-    featured: false,
+    featured: true,
     competition: "IIM Bangalore Fest",
     documentUrl: "https://drive.google.com/file/d/1oaooqga5ok1ClRsyOduk8Q4jBK2R6IzA/view",
   },
   {
-    slug: "train-delay-prediction",
-    title: "Train Delay Prediction — Operational Optimization",
-    description:
-      "Built a predictive intelligence system using ML to forecast train delays and enable proactive interventions. Gradient Boosting classifier + Random Forest regressor achieving >99% accuracy on 100K+ records. Won 1st Prize at StratQuest, IIT Kharagpur.",
-    tags: ["AI/ML", "Data Science", "Operations", "Python"],
-    year: "2026",
-    thumbnail: "/projects/train-delay.jpg",
-    featured: false,
-    competition: "IIT Kharagpur — StratQuest, Spring Fest'26 (1st Prize)",
-  },
-  {
-    slug: "karyawar",
-    title: "Karyawar — Cash Flow Transformation Strategy",
-    description:
-      "Strategic advisory for inverting the cash cycle of a celebration wear brand. Designed 'Celebration Harvest' — a prepaid savings model generating Rs.250 Cr advance cash float in Year 1, reducing debtor days from 40 to <25.",
-    tags: ["Business Strategy", "Cash Flow", "Retail", "D2C"],
-    year: "2026",
-    thumbnail: "/projects/karyawar.jpg",
-    featured: false,
-    competition: "NIT Surathkal — Biz Blitz, KRISIS 2026",
-  },
-  {
     slug: "nocaps",
     title: "NoCaps — Consumer Brand Strategy",
-    description:
-      "Worked on consumer psychology, positioning, and go-to-market strategy to reframe a traditionally functional product into a confidence-led, youth-oriented brand. Defined USP, target segments, and messaging strategy for a commoditized category.",
+    description: "Worked on consumer psychology, positioning, and go-to-market strategy to reframe a traditionally functional product into a confidence-led, youth-oriented brand. Defined USP, target segments, and messaging strategy for a commoditized category.",
     tags: ["Consumer Psychology", "GTM", "Brand Positioning"],
     year: "2025",
     thumbnail: "/projects/nocaps.jpg",
-    featured: false,
+    featured: true,
     competition: "IIT Delhi E-Summit",
     documentUrl: "https://drive.google.com/file/d/1cXJ-kwhjftx0Y0ru3S5vxijEQCbV_qzm/view",
   },
@@ -686,6 +675,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Data Science & Strategy",
     timeline: "Jan 2026",
     team: "Team of 4 — IIT Kharagpur StratQuest, Spring Fest'26",
+    documentUrl: "https://drive.google.com/file/d/1MHVFL8CvKJ48dP_Lgh_IMgqiXgeWXNt3/view",
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "Railway delays are reactive, not predictive", content: "Large-scale railway operations face persistent and cascading train delays. Delays reduce passenger trust, disrupt crew and asset scheduling, and increase operational costs. Existing systems are reactive — they respond to delays after they happen instead of predicting and preventing them.", bullets: ["No real-time, data-driven delay prediction integrated into operations", "Lack of early-warning mechanisms for high-risk trains", "Limited ability to intervene before delays propagate network-wide", "Existing systems treat all trains equally — no risk-based prioritization"] },
       { id: "research", type: "research", title: "The Research", subtitle: "100K+ records of operational data", content: "We analyzed 100,000+ train operational records including scheduled vs actual arrival/departure timestamps, weather data, maintenance flags, and passenger load. Key finding: delays propagate along shared tracks — one delayed train significantly increases risk for all following trains.", bullets: ["Cleaned and validated operational time-series data (100K+ records)", "Identified departure delay as the strongest predictor of arrival delay", "Found that unscheduled stops and route complexity amplify delays", "Discovered delay propagation is the #1 cascading risk factor"] },
@@ -704,6 +694,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Strategy & Business Case",
     timeline: "Feb 2026",
     team: "Team of 4 — NIT Surathkal Biz Blitz, KRISIS 2026",
+    documentUrl: "https://drive.google.com/file/d/1HwaROaBTBU7WNklh_znkebRL0lbq43bJ/view",
     sections: [
       { id: "problem", type: "problem", title: "The Problem", subtitle: "Growth without cash — a 3-layer structural trap", content: "Karyawar, one of India's most trusted celebration wear brands, was growing revenue but bleeding cash. Store foot traffic was healthy, sales continued to grow, and operating margins were among the best in the industry — but cash from operations had fallen significantly. The 40-day receivable cycle wasn't a payment-terms issue. It reflected a deeper structural problem.", bullets: ["Layer 1: Inventory Push Trap — 52-week refresh cycle pushing inventory to franchisees whether it sold or not. Revenue recognized when goods ship, not when consumers buy.", "Layer 2: Principal-Agent Divorce — Karyawar owns the brand but franchisees own the customer relationship. No visibility into real demand, purchase timing, or repeat behavior.", "Layer 3: Seasonal Cash Mismatch — 4.6M weddings (Nov-Dec 2025 alone) generating Rs.6.5L Cr, but Karyawar produces year-round while purchases happen in spikes.", "Result: Rs.200-400 Cr trapped in working capital, growing reliance on franchise-led sales with delayed payments"] },
       { id: "research", type: "research", title: "The Research", subtitle: "Why all 3 obvious options were traps", content: "The board presented three options: event management expansion, jewellery entry, and operating model refinement. We analyzed each against five criteria — solving root cause, capital required, brand coherence, customer ownership, execution complexity, competitive moat, and time to impact.", bullets: ["Event Management — HARD REJECT: Breaks the asset-light model, adds heavy operational risk, cash cycles worsen due to milestone-based spending", "Jewellery (Full Launch) — SEDUCTIVE TRAP: Gold inventory locks Rs.50-100 Cr working capital, puts Karyawar against Tanishq, Kalyan, and Malabar", "OpEx Refinement — NECESSARY BUT INSUFFICIENT: Tightening receivables may reduce debtor days 8-12 days but structural issues remain", "Key insight: All three options treated symptoms. None addressed the root cause — Karyawar doesn't own its customer."] },
