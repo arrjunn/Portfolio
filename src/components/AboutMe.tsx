@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { funFacts } from "@/lib/data";
 import SectionWrapper from "./SectionWrapper";
 
@@ -23,11 +24,14 @@ export default function AboutMe() {
         className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-8 md:gap-12"
       >
         {/* Photo */}
-        <div className="aspect-[4/5] rounded-2xl bg-bg-secondary border border-border-subtle overflow-hidden">
-          <img
+        <div className="relative aspect-[4/5] rounded-2xl bg-bg-secondary border border-border-subtle overflow-hidden">
+          <Image
             src="/arjun.jpg"
             alt="Arjun Varshney"
-            className="w-full h-full object-cover object-center"
+            fill
+            sizes="(max-width: 768px) 100vw, 45vw"
+            className="object-cover object-center"
+            priority
           />
         </div>
 
@@ -50,8 +54,8 @@ export default function AboutMe() {
             </p>
             <p>
               Outside of product work, you&apos;ll find me leading DevTalks at
-              GDG IIIT Nagpur, picking up Japanese, dissecting retention funnels
-              of apps I use daily, and hunting for the perfect cup of chai.
+              GDG IIIT Nagpur, dissecting retention funnels
+              of apps I use daily.
             </p>
             <p className="text-text-primary font-medium">
               What&apos;s next? A PM internship where I can bring my blend of user

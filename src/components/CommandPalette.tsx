@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useTheme } from "./ThemeProvider";
+import { useMetaKeyLabel } from "@/hooks/usePlatform";
 import { siteConfig } from "@/lib/data";
 
 interface Action {
@@ -20,6 +21,7 @@ export default function CommandPalette() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const { toggleTheme } = useTheme();
+  const { symbol: metaSymbol } = useMetaKeyLabel();
 
   const actions: Action[] = [
     { id: "home", label: "Go to Home", action: () => router.push("/") },
@@ -120,7 +122,7 @@ export default function CommandPalette() {
           >
             {/* Input */}
             <div className="flex items-center gap-3 px-4 border-b border-border-subtle">
-              <span className="text-text-tertiary text-sm">⌘</span>
+              <span className="text-text-tertiary text-sm">{metaSymbol}</span>
               <input
                 ref={inputRef}
                 type="text"

@@ -60,11 +60,12 @@ export default function Hero() {
           {siteConfig.tagline}
         </motion.p>
 
-        {/* CTA — magnetic link */}
+        {/* CTA — magnetic link + secondary booking CTA */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.8, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6"
         >
           <MagneticLink
             href="/work"
@@ -73,6 +74,15 @@ export default function Hero() {
             See what I&apos;ve shipped
             <ArrowRight size={16} />
           </MagneticLink>
+          <a
+            href={siteConfig.calendarUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-mono text-text-tertiary hover:text-accent-primary transition-colors duration-200"
+          >
+            <span aria-hidden className="h-px w-6 bg-border-subtle" />
+            or book a 30-min chat
+          </a>
         </motion.div>
 
         {/* Status badge — subtle, bottom-left */}

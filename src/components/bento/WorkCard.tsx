@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface WorkCardProps {
   project: {
@@ -22,10 +23,12 @@ export default function WorkCard({ project }: WorkCardProps) {
     >
       {/* Thumbnail */}
       <div className="aspect-[3/1] overflow-hidden relative">
-        <img
+        <Image
           src={project.thumbnail}
           alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary via-bg-secondary/30 to-transparent" />
       </div>

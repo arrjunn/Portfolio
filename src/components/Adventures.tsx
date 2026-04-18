@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Photo {
   src: string;
@@ -113,13 +114,15 @@ function Polaroid({
       <div className="bg-[#F5F0E8] p-2.5 pb-0 shadow-xl rounded-sm" style={{ width: "clamp(160px, 20vw, 250px)" }}>
         {/* Photo */}
         <div
-          className="w-full aspect-[4/3] rounded-sm overflow-hidden flex items-center justify-center text-3xl"
+          className="relative w-full aspect-[4/3] rounded-sm overflow-hidden flex items-center justify-center text-3xl"
           style={{ backgroundColor: "#e8e0d0" }}
         >
-          <img
+          <Image
             src={photo.src}
             alt={photo.caption}
-            className="w-full h-full object-cover"
+            fill
+            sizes="250px"
+            className="object-cover pointer-events-none"
             draggable={false}
           />
         </div>
@@ -142,6 +145,15 @@ function Polaroid({
 export default function Adventures() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [stack, setStack] = useState<number[]>(() => photos.map((_, i) => i));
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: coarse)");
+    const update = () => setIsTouch(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const bringToFront = (index: number) => {
     setStack((prev) => {
@@ -168,41 +180,75 @@ export default function Adventures() {
           </p>
         </div>
 
-        {/* Draggable photo area — this is the boundary */}
-        <div
-          ref={containerRef}
-          className="relative w-full rounded-2xl border border-border-subtle overflow-hidden"
-          style={{
-            height: "clamp(400px, 50vw, 600px)",
-            background: "var(--bg-secondary)",
-          }}
-        >
-          {/* Subtle grid pattern */}
+        {isTouch ? (
+          /* Mobile: static masonry grid — drag would hijack scroll */
+          <div className="grid grid-cols-2 gap-4 rounded-2xl border border-border-subtle p-4" style={{ background: "var(--bg-secondary)" }}>
+            {photos.map((photo, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: (i % 4) * 0.08, duration: 0.4 }}
+                style={{ rotate: photo.rotate }}
+                className="bg-[#F5F0E8] p-2 pb-0 shadow-xl rounded-sm"
+              >
+                <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden" style={{ backgroundColor: "#e8e0d0" }}>
+                  <Image
+                    src={photo.src}
+                    alt={photo.caption}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 300px"
+                    className="object-cover"
+                    draggable={false}
+                  />
+                </div>
+                <p
+                  className="text-[9px] leading-snug text-center py-2 px-1"
+                  style={{ fontFamily: "'Instrument Serif', Georgia, serif", color: "#5C5040" }}
+                >
+                  {photo.caption}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          /* Desktop: draggable polaroid canvas */
           <div
-            className="absolute inset-0 opacity-[0.03]"
+            ref={containerRef}
+            className="relative w-full rounded-2xl border border-border-subtle overflow-hidden"
             style={{
-              backgroundImage: "radial-gradient(circle, var(--text-tertiary) 1px, transparent 1px)",
-              backgroundSize: "24px 24px",
+              height: "clamp(400px, 50vw, 600px)",
+              background: "var(--bg-secondary)",
             }}
-          />
-
-          {/* Hint text */}
-          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] font-mono text-text-tertiary/40 select-none">
-            drag the photos around — they bounce off the edges
-          </p>
-
-          {/* Photos — constrained to this container */}
-          {photos.map((photo, i) => (
-            <Polaroid
-              key={i}
-              photo={photo}
-              index={i}
-              constraintsRef={containerRef}
-              zIndex={stack[i]}
-              onBringToFront={() => bringToFront(i)}
+          >
+            {/* Subtle grid pattern */}
+            <div
+              className="absolute inset-0 opacity-[0.03]"
+              style={{
+                backgroundImage: "radial-gradient(circle, var(--text-tertiary) 1px, transparent 1px)",
+                backgroundSize: "24px 24px",
+              }}
             />
-          ))}
-        </div>
+
+            {/* Hint text */}
+            <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] font-mono text-text-tertiary/40 select-none">
+              drag the photos around — they bounce off the edges
+            </p>
+
+            {/* Photos — constrained to this container */}
+            {photos.map((photo, i) => (
+              <Polaroid
+                key={i}
+                photo={photo}
+                index={i}
+                constraintsRef={containerRef}
+                zIndex={stack[i]}
+                onBringToFront={() => bringToFront(i)}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

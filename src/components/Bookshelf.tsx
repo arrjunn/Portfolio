@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { Play } from "lucide-react";
 import { contentIConsume } from "@/lib/data";
 import SectionWrapper from "./SectionWrapper";
@@ -36,9 +37,11 @@ export default function Bookshelf() {
           >
             {/* Avatar */}
             <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-bg-tertiary border border-border-subtle">
-              <img
+              <Image
                 src={channel.avatar}
                 alt={channel.name}
+                width={48}
+                height={48}
                 className="w-full h-full object-cover"
               />
             </div>

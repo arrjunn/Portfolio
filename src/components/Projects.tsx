@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { projects } from "@/lib/data";
 import SectionWrapper from "./SectionWrapper";
 
@@ -34,10 +35,12 @@ function ProjectCard({
       >
         {/* Thumbnail */}
         <div className="aspect-video bg-bg-tertiary relative overflow-hidden">
-          <img
+          <Image
             src={project.thumbnail}
             alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary/90 via-bg-secondary/20 to-transparent" />
         </div>

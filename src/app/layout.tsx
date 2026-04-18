@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, JetBrains_Mono, Instrument_Serif, Bebas_Neue } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import MotionProvider from "@/components/MotionProvider";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
@@ -44,7 +45,11 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Arjun Varshney — AI Product Manager & Builder",
+  metadataBase: new URL("https://arjunvarshney.dev"),
+  title: {
+    default: "Arjun Varshney — AI Product Manager & Builder",
+    template: "%s — Arjun Varshney",
+  },
   description:
     "Personal portfolio of Arjun Varshney, an aspiring AI Product Manager. Exploring the intersection of artificial intelligence, product strategy, and human-centered design.",
   keywords: [
@@ -56,9 +61,17 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Arjun Varshney — AI Product Manager & Builder",
-    description:
-      "Building at the intersection of AI, product, and design.",
+    description: "Building at the intersection of AI, product, and design.",
+    url: "https://arjunvarshney.dev",
+    siteName: "Arjun Varshney",
     type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arjun Varshney — AI Product Manager & Builder",
+    description: "Building at the intersection of AI, product, and design.",
+    creator: "@Arjun86616602",
   },
 };
 
@@ -79,27 +92,29 @@ export default function RootLayout({
           {`(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`}
         </Script>
         <ThemeProvider>
-          <BootScreen />
-          <ConsoleEasterEgg />
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              style: {
-                background: "var(--bg-secondary)",
-                border: "1px solid var(--border-subtle)",
-                color: "var(--text-primary)",
-                fontSize: "13px",
-              },
-            }}
-          />
-          <KonamiWrapper />
-          <ScrollProgress />
-          <CommandPalette />
-          <Navigation />
-          <PageTransition>
-            {children}
-          </PageTransition>
-          <Footer />
+          <MotionProvider>
+            <BootScreen />
+            <ConsoleEasterEgg />
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                style: {
+                  background: "var(--bg-secondary)",
+                  border: "1px solid var(--border-subtle)",
+                  color: "var(--text-primary)",
+                  fontSize: "13px",
+                },
+              }}
+            />
+            <KonamiWrapper />
+            <ScrollProgress />
+            <CommandPalette />
+            <Navigation />
+            <PageTransition>
+              {children}
+            </PageTransition>
+            <Footer />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "./ThemeProvider";
+import { useMetaKeyLabel } from "@/hooks/usePlatform";
 
 const navLinks = [
   { label: "Shipped", href: "/work" },
@@ -21,6 +22,7 @@ export default function Navigation() {
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(!isHome);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { symbol: metaSymbol } = useMetaKeyLabel();
 
   useEffect(() => {
     if (!isHome) return;
@@ -96,7 +98,7 @@ export default function Navigation() {
               aria-label="Open command palette"
             >
               <kbd className="px-1.5 py-0.5 rounded border border-border-subtle bg-bg-secondary text-[10px]">
-                ⌘K
+                {metaSymbol} K
               </kbd>
             </button>
           </div>
