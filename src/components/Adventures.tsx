@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 interface Photo {
@@ -15,56 +15,56 @@ interface Photo {
 const photos: Photo[] = [
   {
     src: "/adventures/photo1.jpg",
-    caption: "in poondi near kodaikanal where we somehow managed to get this close to the sheep from the research center",
+    caption: "sand smiley at nit surathkal beach — the campus's unofficial stress-relief algorithm",
     rotate: -6,
     x: -40,
     y: 20,
   },
   {
     src: "/adventures/photo2.jpg",
-    caption: "basement in diu, escaping the scorching iitgn campus every chance i get",
+    caption: "the taj in agra, grayscale — some things just don't need color to land",
     rotate: 4,
     x: 60,
     y: -10,
   },
   {
     src: "/adventures/photo3.jpg",
-    caption: "late night hackathon vibes at IIT Kharagpur, fueled by chai and adrenaline",
+    caption: "snow-capped peaks in kashmir that make every laptop screen feel very, very small",
     rotate: -3,
     x: -20,
     y: 40,
   },
   {
     src: "/adventures/photo4.jpg",
-    caption: "exploring the streets of boston during HPAIR conference",
+    caption: "shikara on dal lake — a floating flower market, the og farmers' market served on water",
     rotate: 7,
     x: 30,
     y: -30,
   },
   {
     src: "/adventures/photo5.jpg",
-    caption: "campus sunsets at IIIT Nagpur that make you forget the assignment deadlines",
+    caption: "iit roorkee staircase leading into either class or a quiet existential crisis, tbd",
     rotate: -5,
     x: 10,
     y: 10,
   },
   {
     src: "/adventures/photo6.jpg",
-    caption: "starry nights and mountain silhouettes that reset your perspective on everything",
+    caption: "mumbai traffic doing its thing — the city never really pauses for anyone",
     rotate: 3,
     x: -50,
     y: -20,
   },
   {
     src: "/adventures/photo7.jpg",
-    caption: "river trails and misty mornings — the best conversations happen on walks like these",
+    caption: "empty roads near iit hyderabad at an hour when the campus is still asleep",
     rotate: -4,
     x: 45,
     y: 30,
   },
   {
     src: "/adventures/photo8.jpg",
-    caption: "waterfalls that remind you nature ships features without a sprint planning meeting",
+    caption: "'fearless, the derring-do' — border roads sign in kashmir, featuring one very cold me",
     rotate: 6,
     x: -30,
     y: -15,
@@ -75,28 +75,37 @@ function Polaroid({
   photo,
   index,
   constraintsRef,
+  zIndex,
+  onBringToFront,
 }: {
   photo: Photo;
   index: number;
   constraintsRef: React.RefObject<HTMLDivElement | null>;
+  zIndex: number;
+  onBringToFront: () => void;
 }) {
   return (
     <motion.div
       drag
       dragConstraints={constraintsRef}
-      dragElastic={0.3}
+      dragElastic={0.6}
+      dragMomentum
       dragTransition={{
-        bounceStiffness: 300,
-        bounceDamping: 15,
+        power: 0.6,
+        timeConstant: 280,
+        bounceStiffness: 700,
+        bounceDamping: 9,
       }}
-      whileDrag={{ scale: 1.08, zIndex: 50, rotate: 0, cursor: "grabbing" }}
+      onDragStart={onBringToFront}
+      onPointerDown={onBringToFront}
+      whileDrag={{ scale: 1.08, rotate: 0, cursor: "grabbing" }}
       whileHover={{ scale: 1.03 }}
       initial={{ opacity: 0, rotate: photo.rotate }}
       animate={{ opacity: 1, rotate: photo.rotate }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
       className="absolute cursor-grab active:cursor-grabbing select-none"
       style={{
-        zIndex: index,
+        zIndex,
         left: `${5 + (index % 4) * 22}%`,
         top: `${5 + Math.floor(index / 4) * 40}%`,
       }}
@@ -132,6 +141,19 @@ function Polaroid({
 
 export default function Adventures() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [stack, setStack] = useState<number[]>(() => photos.map((_, i) => i));
+
+  const bringToFront = (index: number) => {
+    setStack((prev) => {
+      if (prev[index] === photos.length - 1) return prev;
+      const oldZ = prev[index];
+      return prev.map((z) => {
+        if (z === oldZ) return photos.length - 1;
+        if (z > oldZ) return z - 1;
+        return z;
+      });
+    });
+  };
 
   return (
     <section className="py-16 md:py-24 overflow-hidden">
@@ -176,6 +198,8 @@ export default function Adventures() {
               photo={photo}
               index={i}
               constraintsRef={containerRef}
+              zIndex={stack[i]}
+              onBringToFront={() => bringToFront(i)}
             />
           ))}
         </div>
