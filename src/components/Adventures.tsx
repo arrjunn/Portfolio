@@ -8,67 +8,68 @@ interface Photo {
   src: string;
   caption: string;
   rotate: number;
-  x: number;
-  y: number;
+  left: string;
+  top: string;
 }
 
-// Add your own photos to /public/adventures/ and update this array
+// Hand-scattered layout — spread across the canvas so no two polaroids
+// start stacked. Photo width ~20vw (clamped 160–250px), height ~ that + caption.
 const photos: Photo[] = [
   {
     src: "/adventures/photo1.jpg",
     caption: "sand smiley at nit surathkal beach — the campus's unofficial stress-relief algorithm",
-    rotate: -6,
-    x: -40,
-    y: 20,
+    rotate: -7,
+    left: "2%",
+    top: "4%",
   },
   {
     src: "/adventures/photo2.jpg",
     caption: "the taj in agra, grayscale — some things just don't need color to land",
-    rotate: 4,
-    x: 60,
-    y: -10,
+    rotate: 5,
+    left: "28%",
+    top: "2%",
   },
   {
     src: "/adventures/photo3.jpg",
     caption: "snow-capped peaks in kashmir that make every laptop screen feel very, very small",
-    rotate: -3,
-    x: -20,
-    y: 40,
+    rotate: -4,
+    left: "54%",
+    top: "6%",
   },
   {
     src: "/adventures/photo4.jpg",
     caption: "shikara on dal lake — a floating flower market, the og farmers' market served on water",
-    rotate: 7,
-    x: 30,
-    y: -30,
+    rotate: 8,
+    left: "77%",
+    top: "3%",
   },
   {
     src: "/adventures/photo5.jpg",
     caption: "iit roorkee staircase leading into either class or a quiet existential crisis, tbd",
     rotate: -5,
-    x: 10,
-    y: 10,
+    left: "6%",
+    top: "48%",
   },
   {
     src: "/adventures/photo6.jpg",
     caption: "mumbai traffic doing its thing — the city never really pauses for anyone",
-    rotate: 3,
-    x: -50,
-    y: -20,
+    rotate: 4,
+    left: "32%",
+    top: "52%",
   },
   {
     src: "/adventures/photo7.jpg",
     caption: "empty roads near iit hyderabad at an hour when the campus is still asleep",
-    rotate: -4,
-    x: 45,
-    y: 30,
+    rotate: -6,
+    left: "58%",
+    top: "46%",
   },
   {
     src: "/adventures/photo8.jpg",
     caption: "'fearless, the derring-do' — border roads sign in kashmir, featuring one very cold me",
-    rotate: 6,
-    x: -30,
-    y: -15,
+    rotate: 7,
+    left: "80%",
+    top: "50%",
   },
 ];
 
@@ -89,13 +90,13 @@ function Polaroid({
     <motion.div
       drag
       dragConstraints={constraintsRef}
-      dragElastic={0.6}
+      dragElastic={0.22}
       dragMomentum
       dragTransition={{
-        power: 0.6,
-        timeConstant: 280,
-        bounceStiffness: 700,
-        bounceDamping: 9,
+        power: 0.4,
+        timeConstant: 380,
+        bounceStiffness: 180,
+        bounceDamping: 22,
       }}
       onDragStart={onBringToFront}
       onPointerDown={onBringToFront}
@@ -107,8 +108,8 @@ function Polaroid({
       className="absolute cursor-grab active:cursor-grabbing select-none"
       style={{
         zIndex,
-        left: `${5 + (index % 4) * 22}%`,
-        top: `${5 + Math.floor(index / 4) * 40}%`,
+        left: photo.left,
+        top: photo.top,
       }}
     >
       <div className="bg-[#F5F0E8] p-2.5 pb-0 shadow-xl rounded-sm" style={{ width: "clamp(160px, 20vw, 250px)" }}>
