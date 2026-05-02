@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Projects from "@/components/Projects";
+import GitHubActivity from "@/components/GitHubActivity";
 import ImpactDashboard from "@/components/ImpactDashboard";
 import ProductTeardowns from "@/components/ProductTeardowns";
 import Skills from "@/components/Skills";
@@ -14,6 +15,7 @@ export default function WorkPage() {
   return (
     <main className="pt-20">
       <Projects showAll />
+      <GitHubActivity />
       <ImpactDashboard />
       <ProductTeardowns />
       <Skills />

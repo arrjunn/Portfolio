@@ -1,12 +1,20 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { projects } from "@/lib/data";
+import { projects, type ProjectCategory } from "@/lib/data";
 import SectionWrapper from "./SectionWrapper";
+
+type Filter = "all" | ProjectCategory;
+
+const filterOptions: { id: Filter; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "build", label: "AI & Code" },
+  { id: "strategy", label: "Strategy & PM" },
+];
 
 function ProjectCard({
   project,
@@ -101,8 +109,17 @@ function ProjectCard({
 }
 
 export default function Projects({ limit, showAll }: { limit?: number; showAll?: boolean }) {
+  const [filter, setFilter] = useState<Filter>("all");
   const base = showAll ? projects : projects.filter((p) => p.featured);
-  const displayed = limit ? base.slice(0, limit) : base;
+  const filtered =
+    showAll && filter !== "all" ? base.filter((p) => p.category === filter) : base;
+  const displayed = limit ? filtered.slice(0, limit) : filtered;
+
+  const counts: Record<Filter, number> = {
+    all: base.length,
+    build: base.filter((p) => p.category === "build").length,
+    strategy: base.filter((p) => p.category === "strategy").length,
+  };
 
   return (
     <SectionWrapper
@@ -110,12 +127,56 @@ export default function Projects({ limit, showAll }: { limit?: number; showAll?:
       title="Things I've Built"
       description="A selection of projects where I applied product thinking, AI, and code to solve real problems."
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        {displayed.map((project, index) => (
-          <ProjectCard key={project.slug} project={project} index={index} />
-        ))}
-      </div>
+      {showAll && (
+        <div
+          role="tablist"
+          aria-label="Filter projects by category"
+          className="flex flex-wrap gap-2 mb-8 md:mb-10"
+        >
+          {filterOptions.map((opt) => {
+            const isActive = filter === opt.id;
+            return (
+              <button
+                key={opt.id}
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setFilter(opt.id)}
+                className={`group inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
+                  isActive
+                    ? "bg-text-primary text-bg-primary border-text-primary"
+                    : "bg-bg-secondary text-text-secondary border-border-subtle hover:border-border-hover hover:text-text-primary"
+                }`}
+              >
+                {opt.label}
+                <span
+                  className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
+                    isActive
+                      ? "bg-bg-primary/20 text-bg-primary"
+                      : "bg-bg-tertiary text-text-tertiary"
+                  }`}
+                >
+                  {counts[opt.id]}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={filter}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
+        >
+          {displayed.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
+          ))}
+        </motion.div>
+      </AnimatePresence>
     </SectionWrapper>
   );
 }

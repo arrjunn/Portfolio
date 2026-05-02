@@ -29,9 +29,12 @@ export const recentAchievement = {
   link: "/work",
 };
 
+export type ProjectCategory = "build" | "strategy";
+
 export const projects = [
   {
     slug: "backlog",
+    category: "build" as ProjectCategory,
     title: "Backlog — AI-Powered Feature Prioritization SaaS",
     description: "Built an AI auto-triage system that classifies, prioritizes, and clusters incoming feature requests using a RAG pipeline and K-means++ clustering. Deployed across 48 production instances.",
     tags: ["AI", "RAG", "SaaS", "Product"],
@@ -42,6 +45,7 @@ export const projects = [
   },
   {
     slug: "train-delay-prediction",
+    category: "build" as ProjectCategory,
     title: "Train Delay Prediction — Operational Optimization",
     description: "Built a predictive intelligence system using ML to forecast train delays and enable proactive interventions. Gradient Boosting + Random Forest achieving >99% accuracy on 100K+ records. Won 1st Prize at StratQuest, IIT Kharagpur.",
     tags: ["AI/ML", "Data Science", "Operations", "Python"],
@@ -53,6 +57,7 @@ export const projects = [
   },
   {
     slug: "post-event-retention",
+    category: "build" as ProjectCategory,
     title: "Post-Event Retention Automation",
     description: "Designed an A/B testing pipeline with automated content generation for 50+ users via n8n, Twilio & Llama3 AI. Built a VIP alert system that reduced response latency by 95%.",
     tags: ["n8n", "Twilio", "Llama3", "A/B Testing"],
@@ -62,6 +67,7 @@ export const projects = [
   },
   {
     slug: "splitwise-teardown",
+    category: "strategy" as ProjectCategory,
     title: "Splitwise Product Teardown",
     description: "Focused on transforming Splitwise from a one-time settlement tool into a household-first shared-finance companion. D30 retention drops by 60% once a group becomes inactive — proposed Household Continuity Rate as the new North Star.",
     tags: ["Product Strategy", "Retention", "Teardown"],
@@ -73,6 +79,7 @@ export const projects = [
   },
   {
     slug: "assistly",
+    category: "strategy" as ProjectCategory,
     title: "Assistly — AI Productivity App",
     description: "Led user research and problem discovery to design an AI productivity assistant that helps users prioritize tasks and reduce cognitive overload. Defined personas, mapped workflows, and structured an MVP balancing personalization with simplicity.",
     tags: ["AI", "UX Research", "MVP Design"],
@@ -84,6 +91,7 @@ export const projects = [
   },
   {
     slug: "karyawar",
+    category: "strategy" as ProjectCategory,
     title: "Karyawar — Cash Flow Transformation Strategy",
     description: "Strategic advisory for inverting the cash cycle of a celebration wear brand. Designed 'Celebration Harvest' — a prepaid savings model generating Rs.250 Cr advance cash float in Year 1, reducing debtor days from 40 to <25.",
     tags: ["Business Strategy", "Cash Flow", "Retail", "D2C"],
@@ -95,6 +103,7 @@ export const projects = [
   },
   {
     slug: "caro",
+    category: "strategy" as ProjectCategory,
     title: "Caro — HealthTech Elder Care",
     description: "Contributed to product strategy and human-centered design for a non-intrusive elder care solution focused on dignity, privacy, and trust. Shaped the product vision around both caregivers and seniors, emphasizing accessibility and ethical design.",
     tags: ["HealthTech", "Product Strategy", "Accessibility"],
@@ -106,6 +115,7 @@ export const projects = [
   },
   {
     slug: "hatk",
+    category: "strategy" as ProjectCategory,
     title: "Hatk — Experiential Photobooth Startup",
     description: "Worked on market research, consumer insights, and product strategy to transform photobooths from a rental service into an experience-driven product. Designed monetization models across B2C and B2B focused on Gen Z virality and emotional engagement.",
     tags: ["Market Research", "B2C/B2B", "Growth Strategy"],
@@ -117,6 +127,7 @@ export const projects = [
   },
   {
     slug: "hiresight",
+    category: "strategy" as ProjectCategory,
     title: "HireSight — AI Hiring & Retention Platform",
     description: "Defined core hiring and attrition problems faced by startups and SMEs, translating them into data-driven product features: employee archetypes, attrition prediction, and intelligent hiring workflows. Prioritized features aligned with measurable business outcomes.",
     tags: ["AI", "HR Tech", "Data-Driven PM"],
@@ -128,6 +139,7 @@ export const projects = [
   },
   {
     slug: "phulkari",
+    category: "strategy" as ProjectCategory,
     title: "Phulkari — Cultural & Luxury Brand Strategy",
     description: "Worked on market repositioning and product narrative strategy to transform Phulkari from a declining craft into a premium, scalable luxury ecosystem. Designed a creator-first model integrating storytelling, authenticity, and global market expansion.",
     tags: ["Brand Strategy", "Luxury", "Social Impact"],
@@ -139,6 +151,7 @@ export const projects = [
   },
   {
     slug: "nocaps",
+    category: "strategy" as ProjectCategory,
     title: "NoCaps — Consumer Brand Strategy",
     description: "Worked on consumer psychology, positioning, and go-to-market strategy to reframe a traditionally functional product into a confidence-led, youth-oriented brand. Defined USP, target segments, and messaging strategy for a commoditized category.",
     tags: ["Consumer Psychology", "GTM", "Brand Positioning"],
