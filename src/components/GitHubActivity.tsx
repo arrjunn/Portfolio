@@ -19,8 +19,15 @@ interface GitHubRepo {
 }
 
 const GITHUB_USER = "arrjunn";
-const PORTFOLIO_TOPIC = "portfolio";
 const MAX_REPOS = 6;
+
+// Repos to hide from the activity feed (e.g. this site, scratch repos).
+// Match by exact lowercase name. Edit this list to suppress a repo.
+const EXCLUDE_REPOS = new Set<string>([
+  "portfolio",
+  "arrjunn",
+  ".github",
+]);
 
 async function getRecentRepos(): Promise<GitHubRepo[]> {
   try {
@@ -45,7 +52,7 @@ async function getRecentRepos(): Promise<GitHubRepo[]> {
           !r.fork &&
           !r.archived &&
           !r.private &&
-          (r.topics ?? []).includes(PORTFOLIO_TOPIC)
+          !EXCLUDE_REPOS.has(r.name.toLowerCase())
       )
       .slice(0, MAX_REPOS);
   } catch {
@@ -93,7 +100,7 @@ export default async function GitHubActivity() {
     <SectionWrapper
       eyebrow="From the workshop"
       title="Recent on GitHub"
-      description={`Auto-pulled from public repos tagged "portfolio" on github.com/${GITHUB_USER}. Refreshes hourly.`}
+      description={`Auto-pulled from my latest public repos at github.com/${GITHUB_USER}. Refreshes hourly — push something and it shows up.`}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {repos.map((repo) => (
@@ -153,19 +160,14 @@ export default async function GitHubActivity() {
         ))}
       </div>
 
-      <div className="mt-8 flex items-center justify-center gap-2 text-xs font-mono text-text-tertiary/70">
-        <span>Want a repo to show here?</span>
+      <div className="mt-8 flex items-center justify-center text-xs font-mono text-text-tertiary/70">
         <a
           href={siteConfig.socials.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-text-tertiary hover:text-text-primary transition-colors"
+          className="inline-flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors"
         >
-          add the
-          <code className="px-1.5 py-0.5 rounded bg-bg-secondary border border-border-subtle">
-            portfolio
-          </code>
-          topic on GitHub
+          see all repos on github
           <ArrowUpRight size={11} />
         </a>
       </div>
